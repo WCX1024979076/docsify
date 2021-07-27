@@ -9,13 +9,21 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
 <body>
+  <nav>
+    <a href="#/">返回首页</a>
+  </nav>
   <div id="app"></div>
   <script>
     window.$docsify = {
+	 alias: {
+          '/acm/(.*)':
+            'https://raw.githubusercontent.com/WCX1024979076/docsify/master/acm'
+        },
       name: '',
-      repo: '',
-	  basePath:
-    'https://raw.githubusercontent.com/ryanmcdermott/clean-code-javascript/master/'
+      repo: 'https://github.com/WCX1024979076/docsify',
+	  basePath:'https://raw.githubusercontent.com/WCX1024979076/docsify/master/',
+	  loadSidebar: true,
+	  subMaxLevel: 2
     }
   </script>
   <!-- Docsify v4 -->
