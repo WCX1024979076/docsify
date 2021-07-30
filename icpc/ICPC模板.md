@@ -807,6 +807,8 @@ int main()
 
 ####  二分图模板
 
+[https://www.cnblogs.com/cherrypill/p/12508114.html](https://www.cnblogs.com/cherrypill/p/12508114.html)
+
 ```c++
 #include <bits/stdc++.h>
 
@@ -833,7 +835,7 @@ int dfs(int k)
 }
 int main()
 {
-    scanf("%d", &n);
+    scanf("%d", &n);  ///两个字符串中不能有两个字符相同，问至少需要分为多少组
     for (int i = 1; i <= n; i++)
         scanf("%s", a[i] + 1);
     for (int i = 1; i <= n; i++)
