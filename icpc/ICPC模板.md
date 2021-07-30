@@ -7,8 +7,9 @@
 std::ios::sync_with_stdio(false);
 std::cin.tie(0);
 ```
-__int128 输入和输出
-```
+####   __int128 输入和输出
+
+```c++
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -44,9 +45,117 @@ int main()
 	int128print(a+b);
 }
 ```
+####  java ACM 基础
+
+````java
+import java.io.*;
+import java.math.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String args[])
+    {
+        //BigDecimal大数Double类
+        //读入
+        Scanner cin = new Scanner (new BufferedInputStream(System.in));
+        int a; double b; BigInteger c; String d;
+        a = cin.nextInt(); b = cin.nextDouble(); c = cin.nextBigInteger(); 
+        d = cin.nextLine(); // 每种类型都有相应的输入函数.
+        System.out.printf("输入的为%d %f %s %s\n",a,b,c.toString(),d);
+        
+        c=cin.nextBigInteger(2); //大数以2进制读入
+        String tmp=c.toString(2); ///将大数以二进制形式输出
+		
+        System.out.print(1); // cout << …;
+        System.out.println(1); // cout << … << endl;
+        System.out.printf("%d",1); // 与C中的printf用法类似.
+		
+        ///字符串处理
+        String st = "abcdefg";
+        System.out.println(st.charAt(0)); // st.charAt(i)就相当于st[i].
+        char [] ch;
+        ch = st.toCharArray(); // 字符串转换为字符数组.
+        for (int i = 0; i < ch.length; i++) ch[i] += 1;
+        System.out.println(ch); // 输入为“bcdefgh”.
+        if (st.startsWith("a")) // 如果字符串以'0'开头.
+            st = st.substring(1); // 则从第1位开始copy(开头为第0位).
+        
+        ///进制转化
+        int num=15,base=2;
+        System.out.printf("15转2进制为%s\n",Integer.toString(num, base));
+        st="1111";
+        System.out.printf("2进制的1111转10进制为%d\n",Integer.parseInt(st, base)); 
+        
+        // 把st当做base进制，转成10进制的int(parseInt有两个参数,第一个为要转的字符串,第二个为进制). 
+        BigInteger m = new BigInteger(st, base); // st是字符串，base是st的进制.
+        
+        ///排序
+        int n=cin.nextInt();
+        Integer[] arr=new Integer[n];
+        for(int i=0;i<n;i++)
+            arr[i]=cin.nextInt();
+        
+        Arrays.sort(arr,new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;     		 ///从大到小排序
+            }
+        });
+        
+        for(int i=0;i<n;i++)
+            System.out.printf("%d ",arr[i]);
+        System.out.println();
+       	
+        ///清空
+        Arrays.fill(arr,5);
+        for(int i=0;i<n;i++)
+            System.out.printf("%d ",arr[i]);
+        System.out.println();
+        
+        ///二分查找
+        System.out.println(Arrays.binarySearch(arr, 5));
+        ///如果key在数组中，则返回搜索值的索引；否则返回-1或者”-“(插入点)。
+        ///插入点是索引键将要插入数组的那一点，即第一个大于该键的元素索引。
+    }
+}
+````
+
+####  java BigInteger 运算
+
+```java
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+
+public class Main {
+    public static void main(String args[])
+    {
+        Scanner cin=new Scanner(System.in);
+        while(cin.hasNext())  ///相当于 scanf()!=EOF
+        {
+            BigInteger a,b,c;
+            a=cin.nextBigInteger();
+            b=cin.nextBigInteger();
+            c=a.add(b);        //把a与b相加并赋给c
+            c=a.subtract(b);   //把a与b相减并赋给c
+            c=a.multiply(b);   //把a与b相乘并赋给c
+            c=a.divide(b);     //把a与b相除并赋给c
+            c=a.mod(b);        // 相当于a%b
+            a.pow(2);         //相当于a^b
+            a.compareTo(b);  //根据该数值是小于、等于、或大于a 返回 -1、0 或 1
+            a.equals(b);     //判断两数是否相等，也可以用compareTo来代替
+            a.min(b);
+            a.max(b);  //取两个数的较小、大者
+            System.out.println(c);
+        }
+    }
+}
+
+```
+
 ### 图论
 
-##### SPFA判断负环
+####  SPFA判断负环
 
 ```c++
 #include <iostream>
@@ -140,7 +249,7 @@ int main()
 }
 ```
 
-##### dijikastra第k短路
+####  dijikastra第k短路
 
 ```c++
 #include <iostream>
@@ -271,7 +380,7 @@ int main()
 }
 ```
 
-##### LCA+ST倍增算法
+####  LCA+ST倍增算法
 
 ```c++
 #include <bits/stdc++.h>
@@ -363,7 +472,7 @@ int main()
 }
 ```
 
-##### 树的直径
+####  树的直径
 
 ```c++
 #include <bits/stdc++.h>
@@ -461,7 +570,7 @@ int main()
 }
 ```
 
-##### 最大流算法
+####  最大流算法
 
 ```c++
 #pragma GCC optimize(1)
@@ -553,7 +662,7 @@ int main()
 }
 ```
 
-##### 最小费用最大流算法
+####  最小费用最大流算法
 
 ```c++
 #pragma GCC optimize(1)
@@ -696,7 +805,7 @@ int main()
 
 ```
 
-##### 二分图模板
+####  二分图模板
 
 ```c++
 #include <bits/stdc++.h>
@@ -754,7 +863,7 @@ int main()
 
 ### 数据结构
 
-##### 树状数组前缀和
+####  树状数组前缀和
 
 ```c++
 #include<bits/stdc++.h>
@@ -794,7 +903,7 @@ int main()
 }
 ```
 
-##### 线段树维护区间和
+####  线段树维护区间和
 
 ```c++
 #include <stdio.h>
@@ -885,7 +994,7 @@ int main()
 }
 ```
 
-##### 划分树求中位数
+####  划分树求中位数
 
 ```c++
 #pragma GCC optimize(1)
@@ -985,7 +1094,7 @@ int main()
 
 ### 字符串
 
-##### KMP算法
+####  KMP算法
 
 ```c++
 #pragma GCC optimize(1)
@@ -1038,7 +1147,7 @@ int main()
 }
 ```
 
-##### 字符串哈希
+####  字符串哈希
 
   给一个长度为n的字符串(1<=n<=200000),他只包含**小写**字母 
 
@@ -1107,7 +1216,7 @@ int main()
 }
 ```
 
-##### 回文串匹配算法（马拉车算法）
+####  回文串匹配算法（马拉车算法）
 
 ```c++
 #include <bits/stdc++.h> ///求解最长回文串，对p[i]/2求和即可得回文串个数
@@ -1148,7 +1257,7 @@ int main()
 }
 ```
 
-##### 字典树
+####  字典树
 
 从一组数据中选取两个数求最大异或值。
 
@@ -1210,7 +1319,7 @@ int main()
 
 ### 数论
 
-##### 欧拉函数模板
+####  欧拉函数模板
 
 ```c++
 #include <bits/stdc++.h>
@@ -1290,7 +1399,7 @@ int main()
 }
 ```
 
-##### 逆序对
+####  逆序对
 
 ```c++
 #include <iostream>
@@ -1373,7 +1482,7 @@ int main()
 }
 ```
 
-##### 二维前缀和
+####  二维前缀和
 
 ```c++
 #include<bits/stdc++.h>
@@ -1405,7 +1514,7 @@ int main(void)
 }
 ```
 
-##### 扩展欧几里得定理
+####  扩展欧几里得定理
 
 1. 求解a * x + b * y = gcd(a,b) 方程的通解x和y
 
@@ -1486,7 +1595,7 @@ int main(void)
    }
    ```
 
-##### 逆元
+####  逆元
 
 ```c++
 #include <bits/stdc++.h>
@@ -1542,9 +1651,9 @@ int main()
     cout<<"a关于模q的逆元为"<<y<<endl;
 }
 ```
-##### 表达式求值（中缀表达式转后缀表达式）
+####  表达式求值（中缀表达式转后缀表达式）
 
-```
+```c++
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -1669,7 +1778,7 @@ int main()
 
 ### 动态规划
 
-##### 最长上升子序列
+####  最长上升子序列
 
 如果你需要移动一样东西，显然接触或者使用磁场电场之类的可以解决。但是有没有办法进行超越距离的随心所欲的移动？
 对于物体或者文字进行超距离移动一直是人类的梦想，有一天这个难题终于被我们的大牛解决了！他现在需要的就是整理数列。数列就是所谓的写在纸上或者在电脑品目上的数列...
@@ -1733,7 +1842,7 @@ int main()
 }
 ```
 
-##### 最长公共子序列
+####  最长公共子序列
 
 ```c++
 for(int i = 1; i <= strlen(a); i ++)
@@ -1744,7 +1853,7 @@ for(int i = 1; i <= strlen(a); i ++)
 				dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
 ```
 
-##### 状压DP
+####  状压DP
 
 ```c++
 #include <bits/stdc++.h>
@@ -1797,7 +1906,7 @@ int main()
 
 ### 计算机图形学
 
-##### 凸包算法
+####  凸包算法
 
 ```c++
 #include<iostream>
@@ -1893,7 +2002,7 @@ int main()
 }
 ```
 
-##### 求任意多边形面积
+####  求任意多边形面积
 
 ```c++
 #include <bits/stdc++.h>
@@ -1928,7 +2037,7 @@ int main()
 }
 ```
 
-##### 线段树+扫描线求正方形颜色反转
+####  线段树+扫描线求正方形颜色反转
 
 输入：
 
@@ -2031,7 +2140,7 @@ int main()
 
 ### 博弈论
 
-##### 巴什博弈
+####  巴什博弈
 
 只有一堆n个物品，两个人从轮流中取出（1~m）个；最后取光者胜。
 
@@ -2045,7 +2154,7 @@ int main()
  }
 ```
 
-##### 尼姆博弈
+####  尼姆博弈
 
 有若干堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。
 
@@ -2062,7 +2171,7 @@ int Nimm_Game(int n)//假设n个数存在数组f[]中,有必胜策略返回1
 }
 ```
 
-##### 威佐夫博奕
+####  威佐夫博奕
 
 有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。
 
@@ -2087,11 +2196,11 @@ int Wythoff_Game(int a,int b)
         return 1;//非奇异局势，先手胜！
 }
 ```
-##### SG函数和NIM博弈
+####  SG函数和NIM博弈
 [题目题解](https://blog.csdn.net/jk_chen_acmer/article/details/83477602?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242)
 [题目链接](http://icpc.upc.edu.cn/problem.php?cid=2810&pid=1)
 [SG函数详解](https://blog.csdn.net/strangedbly/article/details/51137432)
-```
+```c++
 #include <bits/stdc++.h>
 using namespace std;
 bool vis[300]={0};
