@@ -875,6 +875,8 @@ int main()
 
 #### Tarjan算法
 
+[Tarjan 算法及其应用](https://blog.csdn.net/weixin_42038564/article/details/105620265)
+
 1. 求割边
 
 ```c++
@@ -935,6 +937,198 @@ int main()
         }
     }
 }
+```
+
+2. 缩点求将图转变为强连通图需要加边的数目
+
+题目来源：POJ 2767 
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+struct node
+{
+    int to, next;
+};
+node edge[200500] = {0};
+int head[200500] = {0}, dfn[200500] = {0}, low[200500] = {0};
+int stack1[200500] = {0}, vis[200500] = {0}, color[200500] = {0};
+bool in[200500] = {0}, out[200500] = {0};
+int cnt = 0, tot = 0, top = 0, color_num = 0;
+void add_edge(int from, int to)
+{
+    edge[++cnt] = {to, head[from]};
+    head[from] = cnt;
+}
+void tarjan(int now)
+{
+    stack1[++top] = now;
+    vis[now] = 1;
+    dfn[now] = low[now] = ++tot;
+    for (int i = head[now]; i; i = edge[i].next)
+    {
+        int y = edge[i].to;
+        if (!dfn[y])
+        {
+            tarjan(y);
+            low[now] = min(low[now], low[y]);
+        }
+        else if (vis[y])
+            low[now] = min(low[now], dfn[y]);
+    }
+    if (dfn[now] == low[now]) ///强连通块
+    {
+        color[now] = ++color_num;
+        vis[now] = 0;
+        while (stack1[top] != now)
+        {
+            color[stack1[top]] = color_num;
+            vis[stack1[top--]] = 0;
+        }
+        vis[stack1[top]] = 0;
+        top--;
+    }
+}
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    while (t--)
+    {
+        int n, m, from, to;
+        scanf("%d%d", &n, &m);
+        for (int i = 0; i <= n + 1; i++)
+            in[i] = out[i] = head[i] = dfn[i] = low[i] = stack1[i] = vis[i] = color[i] = 0;
+        cnt = 0, tot = 0, top = 0, color_num = 0;
+        for (int i = 1; i <= m; i++)
+        {
+            scanf("%d%d", &from, &to);
+            add_edge(from, to);
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            if (!dfn[i])
+                tarjan(i);
+        }
+        if (color_num == 1)
+        {
+            printf("0\n");
+            continue;
+        }
+        int in_num = color_num, out_num = color_num;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = head[i]; j; j = edge[j].next)
+            {
+                int to = edge[j].to;
+                if (color[to] != color[i])
+                {
+                    if (!in[color[to]])
+                    {
+                        in_num--;
+                        in[color[to]] = 1;
+                    }
+                    if (!out[color[i]])
+                    {
+                        out_num--;
+                        out[color[i]] = 1;
+                    }
+                }
+            }
+        }
+        printf("%d\n", max(out_num, in_num));
+    }
+}
+```
+
+3. 求割点
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+struct node
+{
+    int to, next;
+};
+node edge[200500] = {0};
+int head[200500] = {0}, dfn[200500] = {0}, low[200500] = {0}, cut[200500] = {0};
+int cnt = 0, tot = 0;
+void add_edge(int from, int to)
+{
+    edge[++cnt] = {to, head[from]};
+    head[from] = cnt;
+}
+void tarjan(int now, int root)
+{
+    dfn[now] = low[now] = ++tot;
+    int ct = 0;
+    for (int i = head[now]; i; i = edge[i].next)
+    {
+        int y = edge[i].to;
+        ct++;
+        if (!dfn[y])
+        {
+            tarjan(y, root);
+            low[now] = min(low[now], low[y]);
+            if (now != root && low[y] >= dfn[now])
+                cut[now] = 1;
+            if (now == root && ct > 1)
+                cut[now] = 1;
+        }
+        else
+            low[now] = min(low[now], dfn[y]);
+    }
+}
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    while (t--)
+    {
+        int n, m, from, to;
+        scanf("%d%d", &n, &m);
+        for (int i = 0; i <= n + 1; i++)
+            head[i] = dfn[i] = low[i] = cut[i] = 0;
+        cnt = 0, tot = 0;
+        for (int i = 1; i <= m; i++)
+        {
+            scanf("%d%d", &from, &to);
+            add_edge(from, to);
+            add_edge(to, from);
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            if (!dfn[i])
+                tarjan(i, i);
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            if (cut[i])
+                printf("%d ", i);
+        }
+        printf("\n");
+    }
+}
+/*
+输入：
+1
+7 7
+1 2
+1 5
+5 6
+5 7
+2 3
+2 4
+3 4
+割点为：
+1 2 5 
+*/
 ```
 
 ### 数据结构
