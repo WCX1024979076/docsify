@@ -873,6 +873,70 @@ int main()
 }
 ```
 
+#### Tarjan算法
+
+1. 求割边
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+struct node
+{
+    int to, next;
+};
+node edge[200500] = {0};
+int head[200500] = {0}, dfn[200500] = {0}, low[200500] = {0}, bridge[200500] = {0};
+int cnt = 1, tot = 0;
+void add_edge(int from, int to)
+{
+    edge[++cnt] = {to, head[from]};
+    head[from] = cnt;
+}
+void tarjan(int x, int in_edge)
+{
+    dfn[x] = low[x] = ++tot;
+    for (int i = head[x]; i; i = edge[i].next)
+    {
+        int y = edge[i].to;
+        if (!dfn[y])
+        {
+            tarjan(y, i);
+            low[x] = min(low[x], low[y]);
+            if (low[y] > dfn[x])
+                bridge[i] = bridge[i ^ 1] = 1; ///桥
+        }
+        else if (i != (in_edge ^ 1))
+            low[x] = min(low[x], dfn[y]);
+    }
+}
+int main()
+{
+    int n, m, from, to;
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= m; i++)
+    {
+        scanf("%d%d", &from, &to);
+        add_edge(from, to);
+        add_edge(to, from);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (!dfn[i])
+            tarjan(i, 0);
+    }
+    for (int i = 2; i <= cnt; i += 2)
+    {
+        if (bridge[i])
+        {
+            printf("%d %d\n", edge[i ^ 1].to, edge[i].to);
+        }
+    }
+}
+```
+
 ### 数据结构
 
 ####  树状数组前缀和
