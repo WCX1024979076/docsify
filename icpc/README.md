@@ -1133,6 +1133,8 @@ int main()
 
 #### 树链剖分+线段树
 
+![HLD](https://oi-wiki.org/graph/images/hld.png)
+
 ```c++
 #pragma GCC optimize(1)
 #pragma GCC optimize(2)
