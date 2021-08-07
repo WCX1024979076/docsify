@@ -1133,6 +1133,8 @@ int main()
 
 #### 树链剖分+线段树
 
+[https://oi-wiki.org/graph/hld/#_4](https://oi-wiki.org/graph/hld/#_4)
+
 ![HLD](https://oi-wiki.org/graph/images/hld.png)
 
 ```c++
