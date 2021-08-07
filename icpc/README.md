@@ -1131,6 +1131,156 @@ int main()
 */
 ```
 
+#### 树链剖分+线段树
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll sum[400500] = {0}, lazy[400500] = {0};
+ll dep[200500] = {0}, size1[200500] = {0}, son[200500] = {0}, f[200500] = {0}, id[200500] = {0}, top[200500] = {0};
+struct node
+{
+    ll to, next;
+};
+node edge[400500] = {0};
+ll head[400500] = {0};
+ll num = 0, cnt = 0;
+void add_edge(ll from, ll to)
+{
+    edge[++num] = {to, head[from]};
+    head[from] = num;
+}
+void dfs1(ll now, ll fa)
+{
+    size1[now] = 1;
+    for (ll i = head[now]; i; i = edge[i].next)
+    {
+        ll to = edge[i].to;
+        if (to == fa)
+            continue;
+        f[to] = now;
+        dep[to] = dep[now] + 1;
+        dfs1(to, now);
+        size1[now] += size1[to];
+        if (size1[to] > size1[son[now]])
+            son[now] = to;
+    }
+}
+void dfs2(ll now, ll fa)
+{
+    id[now] = ++cnt;
+    top[now] = fa;
+    if (son[now])
+        dfs2(son[now], fa);
+    for (ll i = head[now]; i; i = edge[i].next)
+    {
+        ll to = edge[i].to;
+        if (to == f[now] || to == son[now])
+            continue;
+        dfs2(to, to);
+    }
+}
+void push_down(ll t, ll l, ll r)
+{
+    if (lazy[t] == 0)
+        return;
+    lazy[2 * t + 1] += lazy[t];
+    lazy[2 * t] += lazy[t];
+    ll mid = (l + r) / 2;
+    sum[2 * t] += (mid - l + 1) * lazy[t];
+    sum[2 * t + 1] += (r - mid) * lazy[t];
+    lazy[t] = 0;
+}
+void push_up(ll t)
+{
+    sum[t] = sum[2 * t] + sum[2 * t + 1];
+}
+void update(ll t, ll l, ll r, ll L, ll R, ll add)
+{
+    if (l <= L && R <= r)
+    {
+        lazy[t] += add;
+        sum[t] += add * (R - L + 1);
+        return;
+    }
+    push_down(t, L, R);
+    ll mid = (L + R) / 2;
+    if (l <= mid)
+        update(2 * t, l, r, L, mid, add);
+    if (mid < r)
+        update(2 * t + 1, l, r, mid + 1, R, add);
+    push_up(t);
+}
+ll query(ll t, ll l, ll r, ll L, ll R)
+{
+    if (l <= L && R <= r)
+        return sum[t];
+    push_down(t, L, R);
+    ll mid = (L + R) / 2;
+    ll ans = 0;
+    if (l <= mid)
+        ans += query(2 * t, l, r, L, mid);
+    if (mid < r)
+        ans += query(2 * t + 1, l, r, mid + 1, R);
+    return ans;
+}
+void update_chain(ll x, ll y)
+{
+    ll fx = top[x], fy = top[y];
+    while (fx != fy) ///不在同一条重链上
+    {
+        if (dep[fx] < dep[fy])
+            swap(x, y), swap(fx, fy);
+        update(1, id[fx], id[x], 1, cnt, 1);
+        x = f[fx], fx = top[x]; ///跳转到另一条重链
+    }
+    if (id[x] > id[y])
+        swap(x, y);
+    update(1, id[x] + 1, id[y], 1, cnt, 1);
+}
+ll query_chain(ll x, ll y)
+{
+    ll fx = top[x], fy = top[y], ans = 0;
+    while (fx != fy) ///不在同一条重链上
+    {
+        if (dep[fx] < dep[fy])
+            swap(x, y), swap(fx, fy);
+        ans += query(1, id[fx], id[x], 1, cnt);
+        x = f[fx], fx = top[x]; ///跳转到另一条重链
+    }
+    if (id[x] > id[y])
+        swap(x, y);
+    ans += query(1, id[x] + 1, id[y], 1, cnt);
+    return ans;
+}
+int main()
+{
+    ll n, m, from, to;
+    scanf("%lld%lld", &n, &m);
+    for (ll i = 1; i <= n - 1; i++)
+    {
+        scanf("%lld%lld", &from, &to);
+        add_edge(from, to);
+        add_edge(to, from);
+    }
+    f[1] = 0, dep[1] = 1;
+    dfs1(1, 0), dfs2(1, 1);
+    char c[10];
+    for (ll i = 1; i <= m; i++)
+    {
+        scanf("%s%lld%lld", c + 1, &from, &to);
+        if (c[1] == 'P')
+            update_chain(from, to);
+        else
+            printf("%lld\n", query_chain(from, to));
+    }
+}
+```
+
 ### 数据结构
 
 ####  树状数组前缀和
