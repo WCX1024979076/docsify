@@ -801,8 +801,6 @@ int main()
     else
         printf("%d\n",mincost);
 }
-
-
 ```
 
 ####  二分图模板
@@ -872,6 +870,146 @@ int main()
     cout << n - ans / 2 << endl;
 }
 ```
+
+二分图判断
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> v[100500];
+int color[100500] = {0};
+int bfs(int i)
+{
+    queue<int> que;
+    que.push(i);
+    while (!que.empty())
+    {
+        int now = que.front();
+        que.pop();
+        for (int i : v[now])
+        {
+            if (color[i] == 0)
+            {
+                color[i] = 3 - color[now];
+                que.push(i);
+            }
+            else
+            {
+                if (color[i] == color[now])
+                    return 0;
+            }
+        }
+    }
+    return 1;
+}
+int main()
+{
+    int n, m;
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= m; i++)
+    {
+        int from, to;
+        scanf("%d %d", &from, &to);
+        v[from].push_back(to);
+        v[to].push_back(from);
+    }
+    for (int i = 1; i <= m; i++)
+    {
+        if (color[i] == 0)
+        {
+            int tmp = bfs(i);
+            if (tmp == 0)
+            {
+                puts("No");
+                return 0;
+            }
+        }
+    }
+    puts("Yes");
+}
+/*
+输入：
+7 6
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+输出：
+Yes
+输入：
+3 3
+1 2
+2 3
+1 3
+输出：
+No
+*/
+```
+
+二分图最大匹配
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> v[100500];
+map<int, int> mp, vis, mp1;
+int dfs(int now)
+{
+    for (int i = 0; i < v[now].size(); i++)
+    {
+        int to = v[now][i];
+        if (!vis[to])
+        {
+            vis[to] = 1;
+            if (mp[to] == 0 || dfs(mp[to]))
+            {
+                mp[to] = now;
+                mp1[now] = to;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int n1, n2, m;
+    scanf("%d%d%d", &n1, &n2, &m);
+    int from, to;
+    for (int i = 1; i <= m; i++)
+    {
+        scanf("%d%d", &from, &to);
+        to += n1;
+        v[from].push_back(to);
+        v[to].push_back(from);
+    }
+    int ans = 0;
+    for (int i = 1; i <= n1; i++)
+    {
+        vis.clear();
+        ans += dfs(i);
+    }
+    cout << ans << endl;
+    for (int i = 1; i <= n1; i++)
+        cout << max(0,mp1[i]-n1) << ' ';
+}
+```
+
+ 二分图最大独立集：
+
+选最多的点，满足两两之间没有边相连。
+
+二分图中，最大独立集 =n- 最大匹配。
+
+二分图最小点覆盖：
+
+选最少的点，满足每条边至少有一个端点被选，不难发现补集是独立集。
+
+二分图中，最小点覆盖 =n- 最大独立集。
+
+
 
 #### Tarjan算法
 
