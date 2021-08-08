@@ -1009,7 +1009,115 @@ int main()
 
 二分图中，最小点覆盖 =n- 最大独立集。
 
+二分图最大权匹配：
 
+题目：[https://uoj.ac/problem/80](https://uoj.ac/problem/80)
+
+题解：[https://blog.csdn.net/weixin_30528371/article/details/99263983](https://blog.csdn.net/weixin_30528371/article/details/99263983)
+
+讲解：[https://www.cnblogs.com/wenruo/p/5264235.html](https://www.cnblogs.com/wenruo/p/5264235.html)
+
+```c++
+#include <bits/stdc++.h>
+#define inf 0x3f3f3f3f
+using namespace std;
+typedef long long ll;
+int n, m, q;
+int w[405] = {0}, v[405] = {0};
+int vl[405] = {0}, vr[405] = {0}, c[405] = {0};
+int a[405][405] = {0}, ans[405] = {0}, b[405] = {0};
+int tim = 0;
+int dfs(int x)
+{
+    vl[x] = tim;
+    for (int i = 1; i <= m; i++)
+    {
+        if (vr[i] == tim)
+            continue;
+        int d = w[x] + v[i] - a[x][i];
+        if (d == 0)
+        {
+            vr[i] = tim;
+            if (!b[i] || dfs(b[i]))
+            {
+                b[i] = x;
+                return 1;
+            }
+        }
+        else
+        {
+            c[i] = min(c[i], d);
+        }
+    }
+    return 0;
+}
+void km()
+{
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            w[i] = max(w[i], a[i][j]);
+    for (int i = 1; i <= n; i++)
+    {
+        memset(c, inf, sizeof(c));
+        tim += 1;
+        if (dfs(i))
+            continue;
+
+        while (1)
+        {
+            int d = inf, y = 0;
+            for (int j = 1; j <= m; j++)
+                if (vr[j] != tim)
+                    d = min(d, c[j]);
+
+            for (int j = 1; j <= n; j++)
+                if (vl[j] == tim)
+                    w[j] -= d;
+
+            for (int j = 1; j <= m; j++)
+            {
+                if (vr[j] == tim)
+                    v[j] += d;
+                else if (!(c[j] -= d))
+                    y = j;
+            }
+
+            if (!b[y])
+                break;
+
+            int x = b[y];
+            vl[x] = vr[y] = tim;
+            for (int j = 1; j <= m; j++)
+                c[j] = min(c[j], w[x] + v[j] - a[x][j]);
+        }
+        tim += 1;
+        dfs(i);
+    }
+    ll ans1 = 0;
+    for (int i = 1; i <= m; i++)
+        ans1 += a[b[i]][i];
+    printf("%lld\n", ans1);
+    for (int i = 1; i <= m; i++)
+    {
+        if (a[b[i]][i])
+            ans[b[i]] = i;
+    }
+    for (int i = 1; i <= n; i++)
+        printf("%d ", ans[i]);
+}
+int main()
+{
+    scanf("%d%d%d", &n, &m, &q);
+    m = max(m, n);
+    for (int i = 1; i <= q; i++)
+    {
+        int x, y, v;
+        scanf("%d%d%d", &x, &y, &v);
+        a[x][y] = v;
+    }
+    km();
+}
+```
 
 #### Tarjan算法
 
