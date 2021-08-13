@@ -155,6 +155,74 @@ public class Main {
 
 ### 图论
 
+#### 堆优化prim算法
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+#define inf 0x3f3f3f3f
+using namespace std;
+typedef long long ll;
+struct node
+{
+    int to, val;
+};
+vector<node> v[100500];
+struct node1
+{
+    int now, val;
+    bool operator<(const node1 &a) const
+    {
+        return a.val < val;
+    }
+};
+priority_queue<node1> que;
+int dis[100500] = {0};
+void prim()
+{
+    memset(dis, -1, sizeof(dis));
+    que.push({1, 0});
+    while (!que.empty())
+    {
+        node1 now = que.top();
+        que.pop();
+        if (dis[now.now] != -1)
+            continue;
+        dis[now.now] = now.val;
+        for (int i = 0; i < v[now.now].size(); i++)
+        {
+            int to = v[now.now][i].to;
+            int val = v[now.now][i].val;
+            if (dis[to] != -1)
+                continue;
+            que.push({to, val});
+        }
+    }
+}
+int main()
+{
+    int n, m, from, to, val;
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= m; i++)
+    {
+        scanf("%d%d%d", &from, &to, &val);
+        v[from].push_back({to, val});
+        v[to].push_back({from, val});
+    }
+    prim();
+    ll ans = 0;
+    for (ll i = 1; i <= n; i++)
+    {
+        if (dis[i] == -1)
+            return 0 * puts("orz"); ///不连通
+        ans += dis[i];
+    }
+    cout << ans << endl;
+}
+````
+
 ####  SPFA判断负环
 
 ```c++
@@ -2042,6 +2110,63 @@ int main()
 ```
 
 ### 数论
+
+#### 线性筛求质因数的个数
+
+```c++
+///参照于：
+//https://www.luogu.com.cn/blog/SuuTTT/solution%2Dp1029
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3,"Ofast","inline")
+#include <bits/stdc++.h>
+#define inf 0x3f3f3f3f3f3f3f3f
+using namespace std;
+typedef long long ll;
+const ll maxn=1e7+5;
+ll low_prime[10050000]={0};
+ll prime[700500]={0};
+ll cnt=0;
+int main()
+{
+    for(ll i=2;i<=maxn;i++)
+    {
+        if(low_prime[i]==0)
+        {
+            low_prime[i]=i;
+            prime[++cnt]=i;
+        }
+        for(ll j=1;j<=cnt&&prime[j]*i<=maxn;j++)
+        {
+            low_prime[prime[j]*i]=prime[j];
+            if(i%prime[j]==0)
+                break;
+        }
+    }
+    ll t;
+    scanf("%lld",&t);
+    while(t--)
+    {
+        ll n,flag=0;
+        scanf("%lld",&n);
+        for(ll i=1;i<=n;i++)
+        {
+            ll m,sum=0;
+            scanf("%lld",&m);
+            while(m>1)
+            {
+                m/=low_prime[m];
+                sum++;
+            }
+            flag^=sum; ///sum即为质因数的个数
+        }
+        if(!flag)
+            puts("Bob");
+        else
+            puts("Alice");
+    }
+}
+```
 
 ####  欧拉函数模板
 
