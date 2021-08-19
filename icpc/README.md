@@ -1897,6 +1897,245 @@ int main()
 }
 ```
 
+####  线性基
+
+线性基求交，参考与：[https://blog.csdn.net/qcwlmqy/article/details/97584411](https://blog.csdn.net/qcwlmqy/article/details/97584411)
+
+```
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3,"Ofast","inline")
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn=50500;
+typedef long long ll;
+class Bit_Set
+{
+public:
+    ll d[32];
+    Bit_Set()
+    {
+        memset(d,0,sizeof(d));
+    }
+    Bit_Set(const Bit_Set& t)
+    {
+        for(int i=0; i<=31; i++)
+            d[i]=t.d[i];
+    }
+    void clear()
+    {
+        memset(d,0,sizeof(d));
+    }
+    void insert(ll x)
+    {
+        for(int i=31; i>=0; i--)
+        {
+            if(x&(ll(1)<<i))
+            {
+                if(!d[i])
+                {
+                    d[i]=x;
+                    return ;
+                }
+                x^=d[i];
+            }
+        }
+    }
+    bool check(ll x)
+    {
+        for(int i=31; i>=0; i--)
+        {
+            if(x&(ll(1)<<i))
+            {
+                if(!d[i])
+                    return false;
+                x^=d[i];
+            }
+        }
+        return true;
+    }
+    void show()
+    {
+        for(int i=0; i<=31; i++)
+            cout<<i<<' '<<d[i]<<endl;
+    }
+    friend Bit_Set operator + (const Bit_Set& a, const Bit_Set& b)
+    {
+        Bit_Set a_b(a),c,res;
+        for(int i=31; i>=0; i--)
+        {
+            if(b.d[i])
+            {
+                ll x=b.d[i],k=ll(1)<<i;
+                bool flag=true;
+                for(int j=31; j>=0; j--)
+                {
+                    if(x & (ll(1) << j))
+                    {
+                        if(a_b.d[j])
+                        {
+                            x^=a_b.d[j];
+                            k^=c.d[j];   //将用上的b元素计入k
+                        }
+                        else
+                        {
+                            flag=false; //若不能被a_b表示，将b[i]加入数组
+                            a_b.d[j]=x;
+                            c.d[j]^=k;   //将a_b中b元素标记
+                            break;
+                        }
+                    }
+                }
+                if(flag)
+                {
+                    ll x=0;
+                    for(int j=31; j>=0; j--)
+                    {
+                        if(k&(ll(1)<<j))
+                            x^=b.d[j];
+                        //将用上的b元素和本身的b[i]异或在一起，
+                        //由(a[argv---]^b[argv---]^b[i]==0),所得即为V1的贡献
+                    }
+                    res.insert(x);
+                }
+            }
+        }
+        return res;
+    }
+};
+Bit_Set tree[maxn<<2];
+void build(ll t,ll l,ll r)
+{
+    if(l==r)
+    {
+        int k;
+        ll x;
+        scanf("%d",&k);
+        while(k--)
+        {
+            scanf("%lld",&x);
+            tree[t].insert(x);
+        }
+        return ;
+    }
+    int mid=(l+r)/2;
+    build(2*t,l,mid);
+    build(2*t+1,mid+1,r);
+    tree[t]=tree[2*t]+tree[2*t+1];
+}
+int query(ll t,ll l,ll r,ll L,ll R,ll x)
+{
+    if(l<=L&&R<=r)
+    {
+        return tree[t].check(x);
+    }
+    int flag=1;
+    int mid=(L+R)/2;
+    if(l<=mid)
+        flag&=query(2*t,l,r,L,mid,x);
+    if(r>mid)
+        flag&=query(2*t+1,l,r,mid+1,R,x);
+    return flag;
+}
+int main()
+{
+    int n,m;
+    scanf("%d%d",&n,&m);
+    build(1,1,n);
+    while(m--)
+    {
+        int l,r,x;
+        scanf("%d%d%d",&l,&r,&x);
+        if(query(1,l,r,1,n,x))
+            puts("YES");
+        else
+            puts("NO");
+    }
+}
+```
+
+[线性基基础](https://blog.csdn.net/qcwlmqy/article/details/97156192)
+
+性质
+
+对于一个数组，存在一些数构成该数组的线性基
+
+线性基有三大很优美的性质
+
+- 数组中所有数均可以由线性基中部分数异或得到
+- 数组中所有数异或出来均不为0
+- 对于同一数组线性基个数唯一
+  例如$2 ，4 ， 5 ， 6 $,由线性基$1 , 2 , 4 $数组所有数均可以由$1,2,4$异或得到
+
+线性基构造
+
+数组每加入一个数，对线性基进行修改
+令线性基为d[32] ,数组长度为max(a[i])的最大二进制（所有数均可以由$ 1 , 2 , 4 ⋯ ,2^n$ 表示）
+
+```c++
+void add(int x) {
+	for(int i=31; i>=0; i--) {	//i为线性基下标
+		if(x&(1<<i)) { 
+			if(d[i])x^=d[i];	//若该二进制位已有值，异或寻找线性基能否表达x^d[i]
+			else {
+				d[i]=x;			//若二进制位没有值，说明x不能被线性基表达，令d[i]=x
+				break;			//记得如果插入成功一定要退出
+			}
+		}
+	}
+}
+```
+
+构造合理性：
+
+- 若能插入x ，则将d[i] =x，x可以由线性基表达
+- 若不能插入x，则x最终异或为0，即可以由线性基表达
+
+区间异或最大值
+
+数组$( L , R )$ 内取若干个数，使这些数异或后得到的值最大
+
+令$d [ 32 ] $数组表示线性基的值，$p [ 32 ]$数组表示线性基的位置（为了便于询问，位置尽量存偏右的）
+
+```c++
+int ask(int l,int r){
+	int res=0;
+	for（int i=31;i>=0;i--）
+		if(p[i]>=l&&(res^d[i])>res)
+			res^=d[i];
+	return res;
+}
+```
+
+贪心：高位能变成1，就变成1（高位1比低位都变成1都有价值）
+
+区间异或第k大
+
+先将线性基处理成$ 1 , 2 , 4 , ⋯  ,2^n$ 的二进制表达形式
+
+去除为0的异或值，每一位d[i] =1 相当于可以表达的二进制位数增加一位
+
+```c++
+void work() { 			//将线性基转化为2进制
+	for(int i=1; i<=31; i++)
+		for(int j=1; j<=i; j++)
+			if(d[i]&(1<<(j-1)))
+				d[i]^=d[j-1];
+}
+int k_th(int k) {
+	if(k==1&&tot<n)return 0;   //特判一下，假如k=1，并且原来的序列可以异或出0，就要返回0，
+							   //tot表示线性基中的元素个数，n表示序列长度
+	if(tot<n)k--;       //类似上面，去掉0的情况，因为线性基中只能异或出不为0的解
+	work();
+	int ans=0;
+	for(int i=0; i<=31; i++)
+		if(d[i]!=0) {
+			if(k&1)ans^=d[i];
+			k>>=1;
+		}
+}
+```
+
 ### 字符串
 
 ####  KMP算法
