@@ -3087,6 +3087,78 @@ int main()
 }
 ```
 
+线段树离散化求面积的并：
+
+```c++
+#include <bits/stdc++.h>
+#define inf 0x3f3f3f3f3f3f3f
+using namespace std;
+typedef long long ll;
+ll n;
+ll s[400500] = {0};
+ll len[400500] = {0};
+ll x[400500]= {0};
+unordered_map<ll,ll>mpx;
+void push_up(ll t, ll l, ll r)
+{
+    if (s[t])
+        len[t] = x[r+1] - x[l];
+    else if (l == r)
+        len[t] = 0;
+    else
+        len[t] = len[2 * t + 1] + len[2 * t];
+}
+void update(ll t, ll l, ll r, ll L, ll R, ll add)
+{
+    if (l <= L && R <= r)
+    {
+        s[t] += add;
+        push_up(t, L, R);
+        return;
+    }
+    ll mid = (L + R) / 2;
+    if (l <= mid)
+        update(2 * t, l, r, L, mid, add);
+    if (mid < r)
+        update(2 * t + 1, l, r, mid + 1, R, add);
+    push_up(t, L, R);
+}
+struct node1
+{
+    ll l,r,h,d;
+};
+node1 edge[200500]= {0};
+bool cmp(node1 a,node1 b)
+{
+    return a.h<b.h;
+}
+int main()
+{
+    scanf("%lld", &n);
+    ll cnt=0;
+    for (ll i = 1; i <= n; i++)
+    {
+        ll x1,x2,y1,y2;
+        scanf("%lld%lld%lld%lld", &x1, &y1, &x2, &y2);
+        x[++cnt]=x1,edge[cnt]= {x1,x2,y1,1};
+        x[++cnt]=x2,edge[cnt]= {x1,x2,y2,-1};
+    }
+    sort(x+1,x+cnt+1);
+    sort(edge+1,edge+cnt+1,cmp);
+    ll m=unique(x+1,x+cnt+1)-x-1;
+    for(int i=1; i<=m; i++)
+        mpx[x[i]]=i;
+    ll ans = 0;
+    for (ll i = 1; i < cnt; i++)
+    {
+        ll l=mpx[edge[i].l],r=mpx[edge[i].r];
+        update(1, l,r-1, 1, m, edge[i].d);
+        ans += len[1]*(edge[i+1].h-edge[i].h);
+    }
+    cout << ans << endl;
+}
+```
+
 ### 博弈论
 
 ####  巴什博弈
