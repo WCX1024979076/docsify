@@ -2138,6 +2138,96 @@ int k_th(int k) {
 }
 ```
 
+#### 主席树
+
+参考链接：
+
+[https://blog.csdn.net/zuzhiang/article/details/78173412](https://blog.csdn.net/zuzhiang/article/details/78173412)
+
+[https://www.cnblogs.com/s1124yy/p/6258026.html](https://www.cnblogs.com/s1124yy/p/6258026.html)
+
+[https://blog.csdn.net/tianwei0822/article/details/79439054](https://blog.csdn.net/tianwei0822/article/details/79439054)
+
+主席树维护区间第k大数
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+int L[3200500] = {0}, R[3200500] = {0}, sum[3200500] = {0};
+int tot = 0;
+int a[3200500] = {0}, hash1[3200500] = {0}, T[3200500] = {0};
+int build(int l, int r)
+{
+    int root = ++tot;
+    sum[root] = 0;
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        L[root] = build(l, mid);
+        R[root] = build(mid + 1, r);
+    }
+    return root;
+}
+int update(int pre, int l, int r, int pos)
+{
+    int root = ++tot;
+    L[root] = L[pre];
+    R[root] = R[pre];
+    sum[root] = sum[pre] + 1;
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        if (pos <= mid)
+            L[root] = update(L[pre], l, mid, pos);
+        else
+            R[root] = update(R[pre], mid + 1, r, pos);
+    }
+    return root;
+}
+int query(int l1, int r1, int l, int r, int k) //参数分别为：两颗线段树根节点的编号，左右端点，第k大
+{
+    if (l >= r)
+        return l;
+    int mid = (l + r) / 2;
+    int num = sum[L[r1]] - sum[L[l1]];
+    if (num >= k)
+        return query(L[l1], L[r1], l, mid, k);
+    else
+        return query(R[l1], R[r1], mid + 1, r, k - num);
+}
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    while (t--)
+    {
+        tot = 0;
+        int n, m;
+        scanf("%d%d", &n, &m);
+        for (int i = 1; i <= n; i++)
+            scanf("%d", &a[i]), hash1[i] = a[i];
+        sort(hash1 + 1, hash1 + n + 1);
+        int d = unique(hash1 + 1, hash1 + n + 1) - hash1 - 1;
+        T[0] = build(1, d);
+        for (int i = 1; i <= n; i++)
+        {
+            int pos = lower_bound(hash1 + 1, hash1 + d + 1, a[i]) - hash1;
+            T[i] = update(T[i - 1], 1, d, pos);
+        }
+        for (int i = 1; i <= m; i++)
+        {
+            int l, r, k;
+            scanf("%d%d%d", &l, &r, &k);
+            int pos = query(T[l - 1], T[r], 1, d, k);
+            printf("%d\n", hash1[pos]);
+        }
+    }
+}
+```
+
 ### 字符串
 
 ####  KMP算法
