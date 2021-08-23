@@ -2232,6 +2232,97 @@ int main()
 }
 ```
 
+查询区间内小于等于给定的K的数的个数
+
+题目链接：[https://acm.hdu.edu.cn/showproblem.php?pid=4417](https://acm.hdu.edu.cn/showproblem.php?pid=4417)
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+int L[3200500] = {0}, R[3200500] = {0}, sum[3200500] = {0};
+int tot = 0;
+int a[3200500] = {0}, hash1[3200500] = {0}, T[3200500] = {0};
+int build(int l, int r)
+{
+    int root = ++tot;
+    sum[root] = 0;
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        L[root] = build(l, mid);
+        R[root] = build(mid + 1, r);
+    }
+    return root;
+}
+int update(int pre, int l, int r, int pos)
+{
+    int root = ++tot;
+    L[root] = L[pre];
+    R[root] = R[pre];
+    sum[root] = sum[pre] + 1;
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        if (pos <= mid)
+            L[root] = update(L[pre], l, mid, pos);
+        else
+            R[root] = update(R[pre], mid + 1, r, pos);
+    }
+    return root;
+}
+int query(int l1, int r1, int l, int r, int k)
+{
+    if (k < hash1[l])
+        return 0;
+    if (hash1[r] <= k)
+        return sum[r1] - sum[l1];
+    int mid = (l + r) / 2;
+    if (k <= hash1[mid])
+    {
+        return query(L[l1], L[r1], l, mid, k);
+    }
+    else
+    {
+        int num = 0;
+        num += sum[L[r1]] - sum[L[l1]];
+        num += query(R[l1], R[r1], mid + 1, r, k);
+        return num;
+    }
+}
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    for (int t1 = 1; t1 <= t; t1++)
+    {
+        tot = 0;
+        int n, m;
+        scanf("%d%d", &n, &m);
+        for (int i = 1; i <= n; i++)
+            scanf("%d", &a[i]), hash1[i] = a[i];
+        sort(hash1 + 1, hash1 + n + 1);
+        int d = unique(hash1 + 1, hash1 + n + 1) - hash1 - 1;
+        T[0] = build(1, d);
+        for (int i = 1; i <= n; i++)
+        {
+            int pos = lower_bound(hash1 + 1, hash1 + d + 1, a[i]) - hash1;
+            T[i] = update(T[i - 1], 1, d, pos);
+        }
+        printf("Case %d:\n", t1);
+        for (int i = 1; i <= m; i++)
+        {
+            int l, r, k;
+            scanf("%d%d%d", &l, &r, &k);
+            int ans = query(T[l], T[r + 1], 1, d, k);
+            printf("%d\n", ans);
+        }
+    }
+}
+```
+
 ### 字符串
 
 ####  KMP算法
