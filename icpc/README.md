@@ -168,6 +168,10 @@ int getWeek(int y, int m, int d) {
 }
 ```
 
+#### 组合数奇偶判断
+
+![在这里插入图片描述](http://pic.tim-wcx.ltd/img/20210823111859.png)
+
 ### 图论
 
 #### 堆优化prim算法
