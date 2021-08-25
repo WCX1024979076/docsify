@@ -2,15 +2,13 @@
 
 #### 友情链接：
 
-导航界面：[http://8.131.54.221:7000/](http://8.131.54.221:7000/)
+个人导航界面：[http://8.131.54.221:7000/](http://8.131.54.221:7000/)
 
 Gtihub主页：https://github.com/WCX1024979076
 
-Github同步博客：https://github.tim-wcx.ltd/
+个人博客：https://tim-wcx.ltd/
 
-Github同步博客CDN：https://blog.tim-wcx.workers.dev/
-
-个人DNS：[8.131.54.221:53](8.131.54.221:53)
+Github博客CDN：https://blog.tim-wcx.workers.dev/
 
 代码paste:[http://paste.tim-wcx.ltd/](http://paste.tim-wcx.ltd/)
 
