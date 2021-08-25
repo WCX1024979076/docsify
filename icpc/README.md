@@ -3309,6 +3309,119 @@ int main()
 }
 ```
 
+#### 斜率DP
+
+优化$ Dp[i]=min(Dp[i]，Dp[j]+(h[j]-h[i])^2 +m)$
+
+题目链接：
+
+[Frog 3-ICPC](http://icpc.upc.edu.cn/problem.php?cid=2921&pid=5)
+
+[Frog 3-Atcoder](https://atcoder.jp/contests/dp/tasks/dp_z)
+
+参考链接：
+
+[https://www.cnblogs.com/orzzz/p/7885971.html](https://www.cnblogs.com/orzzz/p/7885971.html)
+
+[https://blog.csdn.net/mengxiang000000/article/details/78113980](https://blog.csdn.net/mengxiang000000/article/details/78113980)
+
+[https://blog.csdn.net/bllsll/article/details/78267029](https://blog.csdn.net/bllsll/article/details/78267029)
+
+公式推导：
+
+我们假设在求解$dp[i]$时，存在$j,k(j>k)$使得从$j$转移比从$k$转移更优，那么需要满足条件：
+
+$dp[j]+(S[i+1]−S[j])^2+M<dp[k]+(S[i+1]−S[k])^2+M$
+
+展开上式
+
+$dp[j]+S[i+1]^2−2S[i+1]S[j]+S[j]^2+M<dp[k]+S[i+1]^2−2S[i+1]S[k]+S[k]^2+M$
+
+移项并消去再合并同类项得
+
+$dp[j]−dp[k]+S[j]^2−S[k]^2<2S[i+1] (S[j]−S[k]) $
+
+把S[j]−S[k]S[j]−S[k]除过去，得到
+
+$\frac{dp[j]−dp[k]+S[j]^2−S[k]^2}{S[j]−S[k]}<2S[i+1]$
+
+我们设$f[x]=dp[x]+S[x]^2$，就化成了
+
+$\frac{f[j]−f[k]}{S[j]−S[k]}<2S[i+1]$
+
+即当$(j>k)$时，若$\frac{f[j]−f[k]}{S[j]−S[k]}<2S[i+1]$，则$j$对更新$dp[i]$比$k$更新$dp[i]$优。---斜率。
+
+当一个数的dp值求完了，它的f值也跟着确定，我们就可以在空间中绘制出点(S[i],f[i])。这个点代表已经求出dp值的一个点。
+
+![img](http://pic.tim-wcx.ltd/img/20210825134528.png)
+
+当我们要求解dp[t]时，如果可用的集合里存在这样三个点，位置关系如图所示：
+
+那么显然
+
+$\frac{f[j]−f[k]}{S[j]−S[k]}>\frac{f[i]−f[j]}{S[i]−S[j]}$
+
+这时候他们和2S[t+1]2S[t+1]的关系有3种：
+
+·$\frac{f[j]−f[k]}{S[j]−S[k]}>\frac{f[i]−f[j]}{S[i]−S[j]}>2S[t+1]$
+
+那么j比i优，k比j优。
+
+·$\frac{f[j]−f[k]}{S[j]−S[k]}>2S[t+1]>\frac{f[i]−f[j]}{S[i]−S[j]}$
+
+那么i比j优，k比j优。
+
+·$2S[t+1]>\frac{f[j]−f[k]}{S[j]−S[k]}>\frac{f[i]−f[j]}{S[i]−S[j]}$
+
+那么i比j优，j比k优。
+
+综上，不管什么样的$S[t+1]$，从j转移都不会是最佳方案。那么用一个数据结构维护一个凸包（下凸），每加入一个点就删去一些点，使其维持凸包的形态。最优转移一定在这个凸包中。
+
+那么根据上述，我们可以有两个推论：
+
+1.$G[j，k]<=S[i]$，那么位子k就可以被淘汰。
+
+2.$G[j，k]<=G[i，j]$，那么表示j比k更优，并且i比j更优，那么位子j是可以被淘汰的。
+
+代码：
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll h[200500] = {0};
+ll dp[200500] = {0};
+deque<ll> que;
+double xielv(ll i, ll j)
+{
+    double ans = (dp[i] + h[i] * h[i] - dp[j] - h[j] * h[j]) * 1.0 / (2 * (h[i] - h[j]));
+    return ans;
+}
+int main()
+{
+    ll n, m;
+    scanf("%lld%lld", &n, &m);
+    for (int i = 1; i <= n; i++)
+        scanf("%lld", &h[i]);
+    que.push_back(1);
+    dp[1] = 0;
+    for (int i = 2; i <= n; i++)
+    {
+        while (que.size() >= 2 && xielv(que[0], que[1]) <= h[i])
+            que.pop_front();
+        if (que.size())
+            dp[i] = dp[que[0]] + (h[i] - h[que[0]]) * (h[i] - h[que[0]]) + m;
+        while (que.size() >= 2 && xielv(que[que.size() - 2], que[que.size() - 1]) > xielv(que[que.size() - 1], i))
+            que.pop_back();
+        que.push_back(i);
+    }
+    cout << dp[n] << endl;
+}
+```
+
 ### 计算机图形学
 
 ####  凸包算法
