@@ -3311,7 +3311,7 @@ int main()
 
 #### 斜率DP
 
-优化$ Dp[i]=min(Dp[i]，Dp[j]+(h[j]-h[i])^2 +m)$
+优化$ Dp[i]=min(Dp[i]，Dp[j]+(h[j]-h[i])^2 +m)(m为常数)$
 
 题目链接：
 
