@@ -6,8 +6,12 @@
 #pragma GCC optimize(1)
 #pragma GCC optimize(2)
 #pragma GCC optimize(3,"Ofast","inline")
+#define inf1 0x3f3f3f3f
+#define inf2 0x3f3f3f3f3f3f3f3f
+const double Pi = acos(-1);
 std::ios::sync_with_stdio(false);
 std::cin.tie(0);
+cout<<fixed<<setprecision(20)<<ans<<endl;
 ```
 ####   __int128 输入和输出
 
