@@ -10,7 +10,7 @@ Gtihub主页：https://github.com/WCX1024979076
 
 Github博客CDN：https://blog.tim-wcx.workers.dev/
 
-代码paste:[http://paste.tim-wcx.ltd/](http://paste.tim-wcx.ltd/)
+代码paste：[http://paste.tim-wcx.ltd/](http://paste.tim-wcx.ltd/)
 
 #### 参考链接：
 
