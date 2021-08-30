@@ -12,7 +12,7 @@
 
 ##### [问题 J: Ada Loveslaces](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=9)
 
-算法：状压DP
+算法：状压
 
 ##### [问题 I: Staggering to the Finish](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=8)
 
