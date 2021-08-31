@@ -18,10 +18,6 @@
 
 + [ ] 算法：并查集
 
-##### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
-
-+ [ ] 算法：并查集
-
 ##### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
 
 + [ ] 算法：线段树+GCD&LCM性质
