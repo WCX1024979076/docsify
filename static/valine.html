@@ -1,0 +1,39 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+<h5>评论</h5>
+<div id="vcomments"></div>
+<script>
+	function getParentUrl() 
+	{ 
+		var url = null;
+		if (parent !== window) 
+		{ 
+			try 
+			{
+			   url = parent.location.href; 
+			}
+			catch (e) 
+			{ 
+			   url = document.referrer; 
+			} 
+		}
+		else
+		{
+			url=window.location.pathname;
+		}
+		return url;
+	}
+	console.log(getParentUrl());
+</script>
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'EwhrenCge7qHt0o07vBUEJ41-gzGzoHsz',
+		appKey: 'B9YlXtvvOxtqGRgiKJycCBs5',
+		path:getParentUrl()
+	})
+</script>
+</body>
