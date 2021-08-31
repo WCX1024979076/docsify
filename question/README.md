@@ -1,30 +1,60 @@
 # 题单
 
+#### 2021秋组队训练赛第二场
+
+#### [问题 A: Three-Axis Views](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=0)
+
++ [ ] 算法：三视图模拟
+
+#### [问题 B: Secrets of Legendary Treasure](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=1)
+
++ [ ] 算法：构造
+
+#### [问题 E: Jewelry Size](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=4)
+
++ [ ] 算法：计算几何
+
+#### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
+
++ [ ] 算法：并查集
+
+#### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
+
++ [ ] 算法：并查集
+
+#### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
+
++ [ ] 算法：线段树+GCD&LCM性质
+
+#### [问题 J: Formica Sokobanica](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=9)
+
++ [ ] 算法：搜索
+
 #### 2021秋组队训练赛第一场
 
 ##### [问题 F: Agamemnon’s Odyssey](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=5)
 
-算法：树的直径
++ [x] 算法：树的直径
 
 ##### [问题 D: Substring Characters](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=3)
 
-算法：字符串
++ [x] 算法：字符串
 
 ##### [问题 J: Ada Loveslaces](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=9)
 
-算法：状压
++ [ ] 算法：状压
 
 ##### [问题 I: Staggering to the Finish](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=8)
 
-算法：计算几何，有点难
++ [ ] 算法：计算几何，有点难
 
 ##### [问题 K: ICPC Record Matching](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=10)
 
-算法：字符串哈希，模拟
++ [ ] 算法：字符串哈希，模拟
 
 ##### [问题 A: LogDB](http://icpc.upc.edu.cn/problem.php?cid=2943&pid=0)
 
-算法：字符串模拟
++ [ ] 算法：字符串模拟
 
 #### 2021个人训练赛第52场
 
