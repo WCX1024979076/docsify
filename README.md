@@ -20,6 +20,3 @@ Github图床：https://github.com/WCX1024979076/image1
 
 docsify：https://docsify.js.org/
 
-[valine](https://github.tim-wcx.ltd/static/valine.html ':include :type=iframe width=100% height=400px')
-
-[cinwell website](https://cinwell.com ':include :type=iframe width=100% height=400px')
