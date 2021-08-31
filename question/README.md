@@ -2,31 +2,31 @@
 
 #### 2021秋组队训练赛第二场
 
-#### [问题 A: Three-Axis Views](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=0)
+##### [问题 A: Three-Axis Views](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=0)
 
 + [ ] 算法：三视图模拟
 
-#### [问题 B: Secrets of Legendary Treasure](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=1)
+##### [问题 B: Secrets of Legendary Treasure](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=1)
 
 + [ ] 算法：构造
 
-#### [问题 E: Jewelry Size](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=4)
+##### [问题 E: Jewelry Size](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=4)
 
 + [ ] 算法：计算几何
 
-#### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
+##### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
 
 + [ ] 算法：并查集
 
-#### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
+##### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
 
 + [ ] 算法：并查集
 
-#### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
+##### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
 
 + [ ] 算法：线段树+GCD&LCM性质
 
-#### [问题 J: Formica Sokobanica](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=9)
+##### [问题 J: Formica Sokobanica](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=9)
 
 + [ ] 算法：搜索
 
