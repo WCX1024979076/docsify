@@ -74,6 +74,10 @@
 
 + [ ] 算法：字符串模拟
 
+##### [问题 B: Ride-Hailing](http://icpc.upc.edu.cn/problem.php?cid=2944&pid=1)
+
++ [x] 算法：图匹配+最大流Dinic算法
+
 #### 2021个人训练赛第52场
 
 ##### [问题 C: 抢占城堡](http://icpc.upc.edu.cn/problem.php?cid=2941&pid=2)
