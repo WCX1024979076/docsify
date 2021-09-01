@@ -663,6 +663,8 @@ int main()
 
 ####  最大流算法
 
+EK算法：
+
 ```c++
 #pragma GCC optimize(1)
 #pragma GCC optimize(2)
@@ -750,6 +752,215 @@ int main()
         }
         printf("%lld\n",EK());
     }
+}
+```
+
+优化版Dinic算法：
+
+```c++
+#pragma GCC optimize(1)
+#pragma GCC optimize(2)
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+#define INF 0x3f3f3f3f3f3f3f3f
+using namespace std;
+typedef long long ll;
+
+struct Edge
+{
+    ll from, to, cap, flow, index;
+    Edge(ll from, ll to, ll cap, ll flow, ll index) : from(from), to(to), cap(cap), flow(flow), index(index) {}
+};
+
+struct Dinic
+{
+    ll N;
+    vector<vector<Edge>> G;
+    vector<Edge *> dad;
+    vector<ll> Q;
+    Dinic(ll N) : N(N), G(N), dad(N), Q(N) {}
+    void AddEdge(ll from, ll to, ll cap)
+    {
+        G[from].push_back(Edge(from, to, cap, 0, G[to].size()));
+        if (from == to)
+            G[from].back().index++;
+        G[to].push_back(Edge(to, from, 0, 0, G[from].size() - 1));
+    }
+    ll BlockingFlow(ll s, ll t)
+    {
+        fill(dad.begin(), dad.end(), (Edge *)NULL);
+        dad[s] = &G[0][0] - 1;
+
+        ll head = 0, tail = 0;
+        Q[tail++] = s;
+        while (head < tail)
+        {
+            ll x = Q[head++];
+            for (ll i = 0; i < G[x].size(); i++)
+            {
+                Edge &e = G[x][i];
+                if (!dad[e.to] && e.cap - e.flow > 0)
+                {
+                    dad[e.to] = &G[x][i];
+                    Q[tail++] = e.to;
+                }
+            }
+        }
+        if (!dad[t])
+            return 0;
+        ll totflow = 0;
+        for (ll i = 0; i < G[t].size(); i++)
+        {
+            Edge *start = &G[G[t][i].to][G[t][i].index];
+            ll amt = INF;
+            for (Edge *e = start; amt && e != dad[s]; e = dad[e->from])
+            {
+                if (!e)
+                {
+                    amt = 0;
+                    break;
+                }
+                amt = min(amt, e->cap - e->flow);
+            }
+            if (amt == 0)
+                continue;
+            for (Edge *e = start; amt && e != dad[s]; e = dad[e->from])
+            {
+                e->flow += amt;
+                G[e->to][e->index].flow -= amt;
+            }
+            totflow += amt;
+        }
+        return totflow;
+    }
+
+    ll GetMaxFlow(ll s, ll t)
+    {
+        ll totflow = 0;
+        while (ll flow = BlockingFlow(s, t))
+            totflow += flow;
+        return totflow;
+    }
+};
+
+int main()
+{
+    ll n, m, f, t, v, s, e;
+    scanf("%lld%lld", &n, &m);
+    scanf("%lld%lld", &s, &e);
+    Dinic dinic(n + 10);
+    for (ll i = 1; i <= m; i++)
+    {
+        scanf("%lld%lld%lld", &f, &t, &v);
+        dinic.AddEdge(f, t, v);
+    }
+    printf("%lld\n", dinic.GetMaxFlow(s, e));
+}
+```
+
+普通版本dinic：
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll INF = 1e18;
+const int N = 5e2 + 7;
+const int M = 2e5 + 7;
+
+int head[N], nex[M], ver[M], tot = 1;
+ll edge[M];
+int n, m, s, t;
+ll maxflow;
+ll deep[N]; //层级数，其实应该是level
+int now[M]; //当前弧优化
+queue<int> q;
+
+inline void add(int x, int y, int z)
+{ //建正边和反向边
+    ver[++tot] = y;
+    edge[tot] = z;
+    nex[tot] = head[x];
+    head[x] = tot;
+    ver[++tot] = x;
+    edge[tot] = 0;
+    nex[tot] = head[y];
+    head[y] = tot;
+}
+
+inline bool bfs()
+{ //在残量网络中构造分层图
+    for (int i = 1; i <= n; i++)
+        deep[i] = INF;
+    while (!q.empty())
+        q.pop();
+    q.push(s);
+    deep[s] = 0;
+    now[s] = head[s]; //一些初始化
+    while (!q.empty())
+    {
+        int x = q.front();
+        q.pop();
+        for (int i = head[x]; i; i = nex[i])
+        {
+            int y = ver[i];
+            if (edge[i] > 0 && deep[y] == INF)
+            { //没走过且剩余容量大于0
+                q.push(y);
+                now[y] = head[y]; //先初始化，暂时都一样
+                deep[y] = deep[x] + 1;
+                if (y == t)
+                    return 1; //找到了
+            }
+        }
+    }
+    return 0;
+}
+
+//flow是整条增广路对最大流的贡献，rest是当前最小剩余容量，用rest去更新flow
+ll dfs(int x, ll flow)
+{ //在当前分层图上增广
+    if (x == t)
+        return flow;
+    ll ans = 0, k, i;
+    for (i = now[x]; i && flow; i = nex[i])
+    {
+        now[x] = i; //当前弧优化（避免重复遍历从x出发的不可拓展的边）
+        int y = ver[i];
+        if (edge[i] > 0 && (deep[y] == deep[x] + 1))
+        {                                   //必须是下一层并且剩余容量大于0
+            k = dfs(y, min(flow, edge[i])); //取最小
+            if (!k)
+                deep[y] = INF; //剪枝，去掉增广完毕的点
+            edge[i] -= k;      //回溯时更新
+            edge[i ^ 1] += k;  //成对变换
+            ans += k;
+            flow -= k;
+        }
+    }
+
+    return ans;
+}
+
+void dinic()
+{
+    while (bfs())
+        maxflow += dfs(s, INF);
+}
+
+int main()
+{
+    scanf("%d%d%d%d", &n, &m, &s, &t);
+    tot = 1;
+    for (ll i = 1; i <= m; i++)
+    {
+        int x, y, z;
+        scanf("%d%d%d", &x, &y, &z);
+        add(x, y, z);
+    }
+    dinic();
+    printf("%lld\n", maxflow);
+    return 0;
 }
 ```
 
