@@ -40,6 +40,10 @@
 
 + [x] 算法：线段树+GCD&LCM性质
 
+##### [问题 I: High-Tech Detective](http://icpc.upc.edu.cn/problem.php?cid=2946&pid=8)
+
++ [x] 算法：字符串+动态规划
+
 ##### [问题 J: Formica Sokobanica](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=9)
 
 + [ ] 算法：搜索
