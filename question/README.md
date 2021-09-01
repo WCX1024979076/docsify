@@ -1,5 +1,23 @@
 # 题单
 
+#### 2021秋组队训练赛第三场
+
+##### [问题 E: Interview Queue](http://icpc.upc.edu.cn/problem.php?cid=2947&pid=4)
+
++ [ ] 算法：STL+模拟
+
+##### [问题 F: Conquest](http://icpc.upc.edu.cn/problem.php?cid=2947&pid=5)
+
++ [x] 算法：优先队列+BFS
+
+##### [问题 H: Antimatter Rain](http://icpc.upc.edu.cn/problem.php?cid=2947&pid=7)
+
++ [ ] 算法：扫描线+线段树
+
+##### [问题 J: Pegs and Legs](http://icpc.upc.edu.cn/problem.php?cid=2947&pid=9)
+
++ [ ] 算法：图论+概率论
+
 #### 2021秋组队训练赛第二场
 
 ##### [问题 A: Three-Axis Views](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=0)
@@ -20,7 +38,7 @@
 
 ##### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
 
-+ [ ] 算法：线段树+GCD&LCM性质
++ [x] 算法：线段树+GCD&LCM性质
 
 ##### [问题 J: Formica Sokobanica](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=9)
 
