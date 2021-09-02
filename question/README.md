@@ -4,7 +4,7 @@
 
 ##### [问题 F: Fair Distribution](http://icpc.upc.edu.cn/problem.php?cid=2949&pid=5)
 
-+ [ ] 算法：数论+整数分块
++ [x] 算法：数论+整数分块
 
 #### 2021秋组队训练赛第三场
 
