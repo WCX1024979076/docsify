@@ -2765,6 +2765,29 @@ int main()
 
 ### 数论
 
+#### 整数分块
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200801211849326.png)
+
+代码实现：
+
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ll n, ans = 0;
+    scanf("%lld", &n);
+    for (ll l = 1, r; l <= n; l = r + 1)
+    {
+        r = n / (n / l);
+        ans += (r - l + 1) * (n / l);
+    }
+    printf("%lld\n", ans);
+}
+```
+
 #### 线性筛求质因数的个数
 
 ```c++
