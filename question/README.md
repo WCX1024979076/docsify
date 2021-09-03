@@ -1,5 +1,23 @@
 # 题单
 
+#### 2021秋组队训练赛第五场
+
+##### [问题 C: Safe Distance](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=2)
+
++ [ ] 算法：并查集
+
+##### [问题 G: Decoration](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=6)
+
++ [ ] 算法：图论+数论
+
+##### [问题 I: Emails](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=8)
+
++ [x] 算法：BFS，无向图直径
+
+##### [问题 K: Unique Activities](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=10)
+
++ [x] 算法：字符串+二分check
+
 #### 2021秋组队训练赛第四场
 
 ##### [问题 F: Fair Distribution](http://icpc.upc.edu.cn/problem.php?cid=2949&pid=5)
@@ -197,3 +215,8 @@
 ##### [问题 K: 字母金字塔](http://icpc.upc.edu.cn/problem.php?cid=2933&pid=10)
 
 算法：大模拟，可以先放一放
+
+```my_html
+<iframe frameborder=0 width=170 height=100 marginheight=0 marginwidth=0 scrolling=no src=http://www.baidu.com></iframe>
+```
+
