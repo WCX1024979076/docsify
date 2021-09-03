@@ -216,7 +216,7 @@
 
 算法：大模拟，可以先放一放
 
-```my_html
+```myhtm1
 <iframe frameborder=0 width=170 height=100 marginheight=0 marginwidth=0 scrolling=no src=http://www.baidu.com></iframe>
 ```
 
