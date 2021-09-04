@@ -2,6 +2,32 @@
 
 #### 2021秋组队训练赛第五场
 
+##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)
+
++ [x] 算法：字符串构造题目
+
+##### [问题 A: Adolescent Architecture](http://icpc.upc.edu.cn/problem.php?cid=2953&pid=0)
+
++ [ ] 算法：排序
+
+##### [问题 B: Bookshelf Building](http://icpc.upc.edu.cn/problem.php?cid=2953&pid=1)
+
++ [ ] 算法：动态规划
+
+##### [问题 J: Knightly Knowledge](http://icpc.upc.edu.cn/problem.php?cid=2953&pid=9)
+
++ [ ] 算法：二分查找
+
+##### [问题 K: Lexicographical Lecturing](http://icpc.upc.edu.cn/problem.php?cid=2953&pid=10)
+
++ [ ] 算法：思维+字符串
+
+##### [问题 C: Decorative Dominoes](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=2)
+
++ [ ] 算法：二分图的匹配
+
+#### 2021秋组队训练赛第五场
+
 ##### [问题 C: Safe Distance](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=2)
 
 + [ ] 算法：并查集
@@ -46,7 +72,7 @@
 
 ##### [问题 A: Three-Axis Views](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=0)
 
-+ [ ] 算法：三视图模拟
++ [x] 算法：三视图模拟
 
 ##### [问题 B: Secrets of Legendary Treasure](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=1)
 
@@ -215,4 +241,3 @@
 ##### [问题 K: 字母金字塔](http://icpc.upc.edu.cn/problem.php?cid=2933&pid=10)
 
 算法：大模拟，可以先放一放
-
