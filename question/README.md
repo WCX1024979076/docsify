@@ -24,7 +24,7 @@
 
 ##### [问题 C: Decorative Dominoes](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=2)
 
-+ [ ] 算法：二分图的匹配
++ [x] 算法：二分图的匹配
 
 ##### [问题 F: Gravity Grid](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=5)
 
@@ -80,7 +80,7 @@
 
 ##### [问题 B: Secrets of Legendary Treasure](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=1)
 
-+ [ ] 算法：构造
++ [x] 算法：构造+模拟题目
 
 ##### [问题 E: Jewelry Size](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=4)
 
@@ -88,7 +88,7 @@
 
 ##### [问题 G: To be Connected, or not to be, that is the Question](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=6)
 
-+ [ ] 算法：并查集
++ [ ] 算法：并查集的撤销
 
 ##### [问题 H: LCM of GCDs](http://icpc.upc.edu.cn/problem.php?cid=2945&pid=7)
 
