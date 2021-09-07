@@ -24,11 +24,11 @@
 
 ##### [问题 C: Decorative Dominoes](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=2)
 
-+ [x] 算法：二分图的匹配
++ [ ] 算法：二分图的匹配
 
 ##### [问题 F: Gravity Grid](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=5)
 
-+ [ ] 算法：大模拟，代码待修改：[https://paste.tim-wcx.ltd/10164](https://paste.tim-wcx.ltd/10164)
++ [x] 算法：大模拟
 
 #### 2021秋组队训练赛第五场
 
