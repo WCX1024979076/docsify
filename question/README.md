@@ -70,7 +70,7 @@
 
 ##### [问题 J: Pegs and Legs](http://icpc.upc.edu.cn/problem.php?cid=2947&pid=9)
 
-+ [ ] 算法：图论+概率论
++ [x] 算法：图论+概率论
 
 #### 2021秋组队训练赛第二场
 
