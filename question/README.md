@@ -34,7 +34,7 @@
 
 ##### [问题 C: Safe Distance](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=2)
 
-+ [ ] 算法：并查集
++ [x] 算法：并查集
 
 ##### [问题 G: Decoration](http://icpc.upc.edu.cn/problem.php?cid=2951&pid=6)
 
