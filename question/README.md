@@ -246,7 +246,13 @@
 
 算法：大模拟，可以先放一放
 
-```text
+```my_html
 <iframe src="https://www.163.com/" width="200" height="200"></iframe>
+```
+
+```my_script
+<script>
+	console.log("Hello World");
+</script>
 ```
 
