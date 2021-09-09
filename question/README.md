@@ -1,6 +1,6 @@
 # 题单
 
-#### 2021秋组队训练赛第五场
+#### 2021秋组队训练赛第六场
 
 ##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)
 
@@ -247,7 +247,7 @@
 算法：大模拟，可以先放一放
 
 
-```my_script
+```my_html
 <script>
 	console.log("Hello World");
 </script>
