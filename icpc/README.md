@@ -1868,7 +1868,7 @@ int main()
     {
         scanf("%lld%lld%lld",&a1,&b1,&c1);
         if(a1==0)
-            update(b1,c1;
+            update(b1,c1);
         else
             printf("%lld\n",sum1(c1)-sum1(b1-1));
     }
@@ -2122,7 +2122,7 @@ int main()
 
 线性基求交，参考与：[https://blog.csdn.net/qcwlmqy/article/details/97584411](https://blog.csdn.net/qcwlmqy/article/details/97584411)
 
-```
+```C++
 #pragma GCC optimize(1)
 #pragma GCC optimize(2)
 #pragma GCC optimize(3,"Ofast","inline")
@@ -4028,6 +4028,7 @@ int Wythoff_Game(int a,int b)
 [题目题解](https://blog.csdn.net/jk_chen_acmer/article/details/83477602?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242)
 [题目链接](http://icpc.upc.edu.cn/problem.php?cid=2810&pid=1)
 [SG函数详解](https://blog.csdn.net/strangedbly/article/details/51137432)
+
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
