@@ -3042,7 +3042,7 @@ int main(void)
 
 ####  扩展欧几里得定理
 
-1. 求解a * x + b * y = gcd(a,b) 方程的通解x和y
+1. 求解$a * x + b * y = gcd(a,b) $方程的通解x和y
 
    ```c++
    #include <bits/stdc++.h>
@@ -3078,13 +3078,13 @@ int main(void)
    }
    ```
 
-2. 求解一般方程a * x+b * y=c的通解x和y
+2. 求解一般方程$a * x+b * y=c$的通解x和y
 
-   将方程转变为：a * x+b * y=gcd(a, b) * c/gcd(a, b);
+   将方程转变为：$a * x+b * y=gcd(a, b) * c/gcd(a, b);$
 
-   最终即为：a * x/(c/gcd(a, b))+b * y/(c/gcd(a, b))=gcd(a, b);
+   最终即为：$a * x/(c/gcd(a, b))+b * y/(c/gcd(a, b))=gcd(a, b);$
 
-   即把结果调整为：x1=x0 * c/gcd(a, b); y1=y0 * c/gcd(a, b);
+   即把结果调整为：$x1=x0 * c/gcd(a, b); y1=y0 * c/gcd(a, b);$
 
    ```c++
    #include<stdio.h>
