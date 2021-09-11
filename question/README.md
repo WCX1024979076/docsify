@@ -12,7 +12,7 @@
 
 ##### [问题 G: ICPC Camp](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=6)
 
-+ [ ] 算法：二分+匹配
++ [x] 算法：二分+匹配
 
 ##### [问题 K: Rooted Subtrees](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=10)
 
