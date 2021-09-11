@@ -275,7 +275,14 @@
 
 ```my_html
 <script>
-	console.log("Hello World");
+	console.log("Hello World!");
+</script>
+```
+
+
+```my_html
+<script>
+	console.log("你好啊！");
 </script>
 ```
 
