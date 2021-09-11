@@ -1,5 +1,31 @@
 # 题单
 
+#### 2021秋组队训练赛第八场
+
+##### [问题 F: Hopscotch](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=5)
+
++ [x] 算法：多源最短路
+
+##### [问题 H: Letter Wheels](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=7)
+
++ [x] 算法：字符串哈希
+
+##### [问题 G: ICPC Camp](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=6)
+
++ [ ] 算法：二分+匹配
+
+##### [问题 K: Rooted Subtrees](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=10)
+
++ [ ] 算法：LCA+ST倍增
+
+##### [问题 B: Mini Battleship](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=1)
+
++ [ ] 算法：搜索
+
+##### [问题 D: All Kill](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=3)
+
++ [ ] 算法：概率论+打表/找规律
+
 #### 2021秋组队训练赛第六场
 
 ##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)
