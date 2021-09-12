@@ -56,6 +56,16 @@
 
 + [ ] 算法：概率论+打表/找规律
 
+#### 2021秋组队训练赛第七场
+
+##### [问题 A: Anagram](http://icpc.upc.edu.cn/problem.php?cid=2956&pid=0)
+
++ [x] 算法：字符串模拟
+
+##### [问题 C: Cities](http://icpc.upc.edu.cn/problem.php?cid=2956&pid=2)
+
++ [x] 算法：最小生成树
+
 #### 2021秋组队训练赛第六场
 
 ##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)
