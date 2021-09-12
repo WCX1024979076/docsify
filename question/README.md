@@ -1,5 +1,35 @@
 # 题单
 
+#### 2021秋组队训练赛第九场
+
+##### [问题 H: Prime Set](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=7)
+
++ [x] 算法：二分图匹配+匈牙利网路
+
+##### [问题 G: NumbersI](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=6)
+
++ [x] 算法：Java高精度+贪心
+
+##### [问题 C: Crusaders Quest](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=2)
+
++ [x] 算法：字符串
+
+##### [问题 E: String of CCPC](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=4)
+
++ [x] 算法：字符串
+
+##### [问题 L: One-Dimensional Maze](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=11)
+
++ [x] 算法：前后缀
+
+##### [问题 A: Balloon Robot](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=0)
+
++ [ ] 算法：前后缀
+
+##### [问题 M: Safest Buildings](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=12)
+
++ [ ] 算法：计算几何
+
 #### 2021秋组队训练赛第八场
 
 ##### [问题 F: Hopscotch](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=5)
