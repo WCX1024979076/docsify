@@ -66,6 +66,10 @@
 
 + [x] 算法：最小生成树
 
+##### [问题 F: Four-tuples](http://icpc.upc.edu.cn/problem.php?cid=2956&pid=5)
+
++ [x] 算法：容斥原理
+
 #### 2021秋组队训练赛第六场
 
 ##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)

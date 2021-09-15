@@ -130,33 +130,85 @@ public class Main {
 
 ```java
 import java.io.*;
-import java.math.BigInteger;
+import java.math.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String args[])
+
+    public static void main(String args[]) 
     {
-        Scanner cin=new Scanner(System.in);
-        while(cin.hasNext())  ///相当于 scanf()!=EOF
-        {
-            BigInteger a,b,c;
-            a=cin.nextBigInteger();
-            b=cin.nextBigInteger();
-            c=a.add(b);        //把a与b相加并赋给c
-            c=a.subtract(b);   //把a与b相减并赋给c
-            c=a.multiply(b);   //把a与b相乘并赋给c
-            c=a.divide(b);     //把a与b相除并赋给c
-            c=a.mod(b);        // 相当于a%b
-            a.pow(2);         //相当于a^b
-            a.compareTo(b);  //根据该数值是小于、等于、或大于a 返回 -1、0 或 1
-            a.equals(b);     //判断两数是否相等，也可以用compareTo来代替
-            a.min(b);
-            a.max(b);  //取两个数的较小、大者
-            System.out.println(c);
+        Scanner cin = new Scanner(System.in);
+        while (cin.hasNext()) ///相当于 scanf()!=EOF
+        { 
+            BigInteger a, b, c;
+
+            //大数初始化
+            //1.二进制字符串
+		    BigInteger interNum1 = new BigInteger("1011100111",2);
+		    //2.十进制字符串
+		    BigInteger interNum2 = new BigInteger("123456");
+            //3.十进制数字
+            BigInteger interNum3 = BigInteger.valueOf(8);
+            
+            //大数读入
+            a = cin.nextBigInteger();
+            b = cin.nextBigInteger();
+            
+            //基本运算
+            //1.把a与b相加并赋给c
+            c = a.add(b); 
+            //2.把a与b相减并赋给c
+            c = a.subtract(b); 
+            //3.把a与b相乘并赋给c
+            c = a.multiply(b); 
+            //4.把a与b相除并赋给c
+            c = a.divide(b);
+            //5.取模，(需 b > 0，否则出现异常：ArithmeticException("BigInteger: modulus not positive"))
+            c = a.mod(b);
+            //6.求余
+		    c = a.remainder(b);
+            //7.相当于a^b
+            c = a.pow(2); 
+            //8.根据该数值是小于、等于、或大于a 返回 -1、0 或 1
+            int ans1 = a.compareTo(b);
+            //9.判断两数是否相等，也可以用compareTo来代替
+            boolean ans2 = a.equals(b); 
+            //10.最大值和最小值
+            c = a.min(b);
+            c = a.max(b);
+
+            //类型转换
+            //1.转换为bigNum的二进制补码形式
+            byte[] num1 = a.toByteArray(); 
+            //2.转换为bigNum的十进制字符串形式
+            String num2 = a.toString();    
+            //3.转换为bigNum的radix进制字符串形式
+            String num3 = a.toString(2);
+            //4.将bigNum转换为int
+            int num4 = a.intValue();
+            //5.将bigNum转换为long
+            long num5 = a.longValue();
+            //6.将bigNum转换为float
+            float num6 = a.floatValue();
+            //7.将bigNum转换为double
+            double num7 = a.doubleValue();
+
+            //二进制运算
+            //1.与：a&b
+            BigInteger bigNum1 = a.and(b);
+            //2.或：a|b
+            BigInteger bigNum2 = a.or(b);
+            //3.异或：a^b
+            BigInteger bigNum3 = a.xor(b);
+            //4.取反：~a
+            BigInteger bigNum4 = a.not();
+            //5.左移n位： (a << n)
+            BigInteger bigNum5 = a.shiftLeft(3);
+            //6.右移n位： (a >> n)
+            BigInteger bigNum6 = a.shiftRight(3);
         }
     }
 }
-
 ```
 
 #### 判断周几
@@ -3418,6 +3470,23 @@ int main() {
 不同的是，m 并一定等于 n，且排队序列是一种排列，需要考虑先后顺序，例如各自持有 50 coin 的甲和乙的前后关系会造成两种不同的排队序列。所以，将会有 ![[公式]](https://www.zhihu.com/equation?tex=%28C_%7Bm%2Bn%7D%5E%7Bm%7D-C_%7Bm%2Bn%7D%5E%7Bm%2B1%7D%29%2Am%21%2An%21)
 
 第二项为什么是 ![[公式]](https://www.zhihu.com/equation?tex=C_%7Bm%2Bn%7D%5E%7Bm%2B1%7D) ，其实很简单，我们每次把第一个前缀小于0 的前缀取反后，会造成 +1 多了一个而 -1 少了一个。这里 +1 有 m 个，-1 有 n 个，取反后 +1 变成`m + 1`个，-1 变成`n - 1`个，总和不变。
+
+```c++
+const int C_maxn = 1e4 + 10;
+ll CatalanNum[C_maxn];
+ll inv[C_maxn];
+inline void Catalan_Mod(int N, LL mod)
+{
+    inv[1] = 1;
+    for (int i = 2; i <= N + 1; i++) ///线性预处理 1 ~ N 关于 mod 的逆元
+        inv[i] = (mod - mod / i) * inv[mod % i] % mod;
+
+    CatalanNum[0] = CatalanNum[1] = 1;
+
+    for (int i = 2; i <= N; i++)
+        CatalanNum[i] = CatalanNum[i - 1] * (4 * i - 2) % mod * inv[i + 1] % mod;
+}
+```
 
 ### 动态规划
 
