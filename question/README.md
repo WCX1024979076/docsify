@@ -70,6 +70,14 @@
 
 + [x] 算法：容斥原理
 
+##### [问题 B: Bullet](http://icpc.upc.edu.cn/problem.php?cid=2956&pid=1)
+
++ [x] 算法：二分+二分图匹配
+
+##### [问题 G: Games](http://icpc.upc.edu.cn/problem.php?cid=2956&pid=6)
+
++ [x] 算法：博弈论+动态规划
+
 #### 2021秋组队训练赛第六场
 
 ##### [问题 L: Mixtape Management](http://icpc.upc.edu.cn/problem.php?cid=2954&pid=11)
