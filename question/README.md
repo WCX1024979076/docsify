@@ -46,7 +46,7 @@
 
 ##### [问题 K: Rooted Subtrees](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=10)
 
-+ [ ] 算法：LCA+ST倍增
++ [x] 算法：LCA+ST倍增
 
 ##### [问题 B: Mini Battleship](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=1)
 
