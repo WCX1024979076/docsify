@@ -211,6 +211,82 @@ public class Main {
 }
 ```
 
+#### java BigDecimal 运算
+
+```java
+import java.io.*;
+import java.math.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String args[]) 
+    {
+        Scanner cin = new Scanner(System.in);
+        while (cin.hasNext()) ///相当于 scanf()!=EOF
+        { 
+            BigDecimal a, b, c;
+            
+            //大数初始化
+            //1.十进制字符串
+            BigDecimal interNum1 = new BigDecimal("0.005");
+            //2.十进制数字
+            BigDecimal interNum2 =new BigDecimal(0.000005);
+            BigDecimal interNum3 = BigDecimal.valueOf(0.000005);
+            
+            //大数读入
+            a = cin.nextBigDecimal();
+            b = cin.nextBigDecimal();
+            
+            //大数保留小数位输出
+            BigDecimal d=a.setScale(10, RoundingMode.HALF_UP);//保留十位小数
+            System.out.println(d);
+
+            //基本运算
+            //1.把a与b相加并赋给c
+            c = a.add(b); 
+            //2.把a与b相减并赋给c
+            c = a.subtract(b); 
+            //3.把a与b相乘并赋给c
+            c = a.multiply(b); 
+            //4.把a与b相除并赋给c
+            c = a.divide(b,10,BigDecimal.ROUND_UP); //舍入远离零的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_DOWN); //接近零的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_CEILING); //接近正无穷大的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_FLOOR); //接近负无穷大的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_UP); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为向上舍入的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_DOWN); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为上舍入的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_EVEN); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入。
+            //5.求余
+            c = a.remainder(b);
+            //6.相当于a^b
+            c = a.pow(2); 
+            //7.根据该数值是小于、等于、或大于a 返回 -1、0 或 1
+            int ans1 = a.compareTo(b);
+            //8.判断两数是否相等，也可以用compareTo来代替
+            boolean ans2 = a.equals(b); 
+            //9.最大值和最小值
+            c = a.min(b);
+            c = a.max(b);
+            //10.绝对值
+            c = a.abs();
+        
+            //类型转换
+            //1.转换为bigNum的十进制字符串形式
+            String num2 = a.toString();
+            //2.将bigNum转换为int
+            int num4 = a.intValue();
+            //3.将bigNum转换为long
+            long num5 = a.longValue();
+            //4.将bigNum转换为float
+            float num6 = a.floatValue();
+            //5.将bigNum转换为double
+            double num7 = a.doubleValue();
+        }
+    }
+}
+```
+
 #### 判断周几
 
 ```c++
@@ -1362,6 +1438,10 @@ int main()
 选最少的点，满足每条边至少有一个端点被选，不难发现补集是独立集。
 
 二分图中，最小点覆盖 =n- 最大独立集。
+
+二分图有向无向建图规则：
+
+有左右之分建单向边，无左右之分建无向边 答案除2
 
 二分图最大权匹配：
 
