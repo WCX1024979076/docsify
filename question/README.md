@@ -1,5 +1,27 @@
 # 题单
 
+#### 2021秋组队训练赛第十一场
+
+##### [问题 B: Collatz Conjecture](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=1)
+
++ [ ] 算法：GCD 性质
+
+##### [问题 G: Hoarse Horses](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=6)
+
++ [ ] 算法：计算几何+图的性质
+
+##### [问题 K: Lemonade Trade](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=10)
+
++ [ ] 算法：数学，乘法---对数变换--->加法
+
+##### [问题 L: Manhattan Mornings](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=11)
+
++ [x] 算法：最大上升子序列
+
+##### [问题 H: Irrational Division](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=7)
+
++ [ ] 算法：规律题
+
 #### 2021秋组队训练赛第九场
 
 ##### [问题 H: Prime Set](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=7)
@@ -24,7 +46,7 @@
 
 ##### [问题 A: Balloon Robot](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=0)
 
-+ [ ] 算法：前后缀
++ [x] 算法：前后缀
 
 ##### [问题 M: Safest Buildings](http://icpc.upc.edu.cn/problem.php?cid=2960&pid=12)
 
@@ -46,11 +68,11 @@
 
 ##### [问题 K: Rooted Subtrees](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=10)
 
-+ [ ] 算法：LCA+ST倍增
++ [x] 算法：LCA+ST倍增
 
 ##### [问题 B: Mini Battleship](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=1)
 
-+ [ ] 算法：搜索
++ [x] 算法：搜索
 
 ##### [问题 D: All Kill](http://icpc.upc.edu.cn/problem.php?cid=2958&pid=3)
 
