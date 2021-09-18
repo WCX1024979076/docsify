@@ -211,6 +211,82 @@ public class Main {
 }
 ```
 
+#### java BigDecimal 运算
+
+```java
+import java.io.*;
+import java.math.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String args[]) 
+    {
+        Scanner cin = new Scanner(System.in);
+        while (cin.hasNext()) ///相当于 scanf()!=EOF
+        { 
+            BigDecimal a, b, c;
+            
+            //大数初始化
+            //1.十进制字符串
+            BigDecimal interNum1 = new BigDecimal("0.005");
+            //2.十进制数字
+            BigDecimal interNum2 =new BigDecimal(0.000005);
+            BigDecimal interNum3 = BigDecimal.valueOf(0.000005);
+            
+            //大数读入
+            a = cin.nextBigDecimal();
+            b = cin.nextBigDecimal();
+            
+            //大数保留小数位输出
+            BigDecimal d=a.setScale(10, RoundingMode.HALF_UP);//保留十位小数
+            System.out.println(d);
+
+            //基本运算
+            //1.把a与b相加并赋给c
+            c = a.add(b); 
+            //2.把a与b相减并赋给c
+            c = a.subtract(b); 
+            //3.把a与b相乘并赋给c
+            c = a.multiply(b); 
+            //4.把a与b相除并赋给c
+            c = a.divide(b,10,BigDecimal.ROUND_UP); //舍入远离零的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_DOWN); //接近零的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_CEILING); //接近正无穷大的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_FLOOR); //接近负无穷大的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_UP); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为向上舍入的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_DOWN); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为上舍入的舍入模式。
+            c = a.divide(b,10,BigDecimal.ROUND_HALF_EVEN); //向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入。
+            //5.求余
+            c = a.remainder(b);
+            //6.相当于a^b
+            c = a.pow(2); 
+            //7.根据该数值是小于、等于、或大于a 返回 -1、0 或 1
+            int ans1 = a.compareTo(b);
+            //8.判断两数是否相等，也可以用compareTo来代替
+            boolean ans2 = a.equals(b); 
+            //9.最大值和最小值
+            c = a.min(b);
+            c = a.max(b);
+            //10.绝对值
+            c = a.abs();
+        
+            //类型转换
+            //1.转换为bigNum的十进制字符串形式
+            String num2 = a.toString();
+            //2.将bigNum转换为int
+            int num4 = a.intValue();
+            //3.将bigNum转换为long
+            long num5 = a.longValue();
+            //4.将bigNum转换为float
+            float num6 = a.floatValue();
+            //5.将bigNum转换为double
+            double num7 = a.doubleValue();
+        }
+    }
+}
+```
+
 #### 判断周几
 
 ```c++
@@ -530,87 +606,72 @@ int main()
 using namespace std;
 //lca板子题,求俩个点最短距离
 //树上两点最短路径:从根节点出发dis[u]+dis[v]-dis[lca]*2
-const int maxn=1e5+5;
 struct node
 {
-    int to,nex,w;
-} road[maxn*2];
-int n,q,cnt;
-int pre[maxn][32],head[maxn],depth[maxn];
-int dis[maxn];
-void add(int u,int v,int w)
+    int to, next;
+};
+int tot = 0;
+node edge[1000500] = {0};
+int head[500500] = {0};
+int fa[500500][18] = {0};
+int dep[500500] = {0};
+void add(int from, int to)
 {
-    road[cnt].to=v;
-    road[cnt].w=w;
-    road[cnt].nex=head[u];
-    head[u]=cnt++;
+    edge[++tot].next = head[from];
+    edge[tot].to = to;
+    head[from] = tot;
 }
-void dfs(int u,int fa)
+void dfs(int now, int fa1)
 {
-    pre[u][0]=fa;
-    depth[u]=depth[fa]+1;
-    for(int i=1; (1<<i)<=depth[u]; i++) //倍增
-        pre[u][i]=pre[pre[u][i-1]][i-1];
-    for(int i=head[u]; ~i; i=road[i].nex)
+    dep[now] = dep[fa1] + 1;
+    fa[now][0] = fa1;
+    for (int i = head[now]; i; i = edge[i].next)
     {
-        int v=road[i].to;
-        if(v!=fa)
-        {
-            dis[v]=dis[u]+road[i].w;
-            dfs(v,u);
-        }
+        int to = edge[i].to;
+        if (to != fa1)
+            dfs(to, now);
     }
 }
-int lca(int u,int v)
+int lca(int x, int y)
 {
-    if(depth[u]<depth[v])
+    if (dep[x] < dep[y])
+        swap(x, y);
+    for (int j = 17; j >= 0; j--)
     {
-        swap(u,v);
+        if (dep[fa[x][j]] >= dep[y])
+            x = fa[x][j];
     }
-    int i=-1,j;
-    while((1<<(i+1))<=depth[u])
-        i++;
-    for(j=i; j>=0; j--)
+    if (x == y)
+        return x;
+    for (int j = 17; j >= 0; j--)
     {
-        if(depth[u]-(1<<j)>=depth[v])
-        {
-            u=pre[u][j];
-        }
+        if (fa[x][j] != fa[y][j])
+            x = fa[x][j], y = fa[y][j];
     }
-    if(u==v)
-        return u;
-    for(int j=i; j>=0; j--)
-    {
-        if(pre[u][j]!=pre[v][j])
-        {
-            u=pre[u][j];
-            v=pre[v][j];
-        }
-    }
-    return pre[u][0];
+    return fa[x][0];
 }
 int main()
 {
-    scanf("%d %d",&n,&q);
-    memset(head,-1,sizeof(head));
-    memset(depth,0,sizeof(depth));
-    cnt=0;
-    for(int i=1; i<n; i++)
+    int n, m, s, f, t;
+    scanf("%d%d%d", &n, &m, &s); ///s为根节点
+    for (int i = 1; i <= n - 1; i++)
     {
-        int u,v,w;
-        scanf("%d %d %d",&u,&v,&w);
-        add(u,v,w);
-        add(v,u,w);
+        scanf("%d%d", &f, &t);
+        add(f, t);
+        add(t, f);
     }
-    dis[1]=0;
-    dfs(1,0);
-    while(q--)
+    dfs(s, 0);
+    for (int j = 1; j <= 17; j++)
     {
-        int u,v;
-        scanf("%d %d",&u,&v);
-        int lc=lca(u,v);
-        int ans=dis[u]+dis[v]-2*dis[lc];
-        printf("%d\n",ans);
+        for (int i = 1; i <= n; i++)
+        {
+            fa[i][j] = fa[fa[i][j - 1]][j - 1];
+        }
+    }
+    for (int i = 1; i <= m; i++)
+    {
+        scanf("%d%d", &f, &t);
+        printf("%d\n", lca(f, t));
     }
 }
 ```
@@ -1362,6 +1423,10 @@ int main()
 选最少的点，满足每条边至少有一个端点被选，不难发现补集是独立集。
 
 二分图中，最小点覆盖 =n- 最大独立集。
+
+二分图有向无向建图规则：
+
+有左右之分建单向边，无左右之分建无向边 答案除2
 
 二分图最大权匹配：
 
