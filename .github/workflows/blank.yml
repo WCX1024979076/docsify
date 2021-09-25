@@ -59,7 +59,7 @@ jobs:
         dir
         git config user.email "1024979076@qq.com"
         git config user.name "WCX1024979076"
-        git add *
+        git add .
         git commit -m "update mkdocs"
         git push --force --quiet https://$GITHUB_TOKEN@github.com/WCX1024979076/mkdocs.git HEAD:master
         dir
