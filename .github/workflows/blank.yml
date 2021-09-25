@@ -62,6 +62,5 @@ jobs:
         git config user.name "WCX1024979076"
         git add *
         git commit -m "update mkdocs"
-        git remote rm origin
         git remote add origin https://$GITHUB_TOKEN@github.com/WCX1024979076/mkdocs.git
         git push origin master
