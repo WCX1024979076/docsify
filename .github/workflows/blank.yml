@@ -13,13 +13,13 @@ jobs:
     - name : pull docsify
       uses: actions/checkout@v2
       with:
-        repository: 'https://github.com/WCX1024979076/docsify.git'
+        repository: 'WCX1024979076/docsify'
         path: '/docs'
     
     - name: pull mkdocs
       uses: actions/checkout@v2
       with:
-        repository: 'https://github.com/WCX1024979076/mkdocs.git'
+        repository: 'WCX1024979076/mkdocs'
         path: '/site'
 
     # 搭建环境 pyhton
