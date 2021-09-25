@@ -11,14 +11,23 @@ jobs:
     
     #引用外部Action,拉取代码仓库到虚拟机工作目录
     - name : pull docsify
-      uses: actions/checkout@v2
-      with:
-        repository: 'WCX1024979076/docsify'
+      run: |
+        mkdir docs
+        dir
+        cd docs
+        git init
+        git pull https://github.com/WCX1024979076/docsify.git
+        dir
+        
     
     - name: pull mkdocs
-      uses: actions/checkout@v2
-      with:
-        repository: 'WCX1024979076/mkdocs'
+      run: |
+        mkdir site
+        dir
+        cd site
+        git init
+        git pull https://github.com/WCX1024979076/mkdocs.git
+        dir
 
     # 安装 mkdocs
     - name: show dir
