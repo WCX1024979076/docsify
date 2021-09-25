@@ -27,7 +27,7 @@ jobs:
         cd site
         git init
         git pull https://github.com/WCX1024979076/mkdocs.git
-        dir
+        dir 
 
     # 安装 mkdocs
     - name: show dir
