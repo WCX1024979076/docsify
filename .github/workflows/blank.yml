@@ -52,14 +52,9 @@ jobs:
 
     #这里是一些额外的操作,通常不需要.这里是为了把编译好的二进制程序push到原始的GitHub仓库
     - name: CommitBinaries
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      run: |
-        cd site
-        dir
-        git config user.email "1024979076@qq.com"
-        git config user.name "WCX1024979076"
-        git add .
-        git commit -m "update mkdocs"
-        git push --force --quiet https://$GITHUB_TOKEN@github.com/WCX1024979076/mkdocs.git HEAD:master
-        dir
+      uses: peaceiris/actions-gh-pages@v3 #和上面一样，这里使用的是他人写好的插件库，作用是发布到其他仓库中或者其他分支上，想要具体了解可以在插件库中搜索
+      with:
+        deploy_key: ${{ secrets.TOKEN }} # key
+        external_repository: WCX1024979076/mkdocs #推送到该仓库中，地址格式为github名称/仓库名
+        publish_branch: master #分支名
+        publish_dir: site #要推送的内容（打包后的博客文件夹）
