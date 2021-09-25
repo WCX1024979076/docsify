@@ -60,7 +60,8 @@ jobs:
         dir
         git config user.email "1024979076@qq.com"
         git config user.name "WCX1024979076"
-        git *
+        git add *
+        git status
         git commit -m "update mkdocs"
-        git remote set-url --push origin https://$GITHUB_TOKEN@github.com/WCX1024979076.mkdocs.git
+        git remote set-url --push origin https://$GITHUB_TOKEN@github.com/WCX1024979076/mkdocs.git
         git push origin master
