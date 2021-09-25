@@ -27,7 +27,7 @@ jobs:
         cd site
         git init
         git pull https://github.com/WCX1024979076/mkdocs.git
-        dir 
+        dir
 
     # 安装 mkdocs
     - name: show dir
@@ -56,10 +56,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
-        cd ./site
+        cd site
+        dir
         git config user.email "1024979076@qq.com"
         git config user.name "WCX1024979076"
-        sudo git *
-        sudo git commit -m "update mkdocs"
+        git *
+        git commit -m "update mkdocs"
         git remote set-url --push origin https://$GITHUB_TOKEN@github.com/WCX1024979076.mkdocs.git
         git push origin master
