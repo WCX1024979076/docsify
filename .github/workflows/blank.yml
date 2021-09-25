@@ -1,0 +1,53 @@
+name: mkdocs
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    
+    #引用外部Action,拉取代码仓库到虚拟机工作目录
+    -name: pull docsify
+    - uses: actions/checkout@v2
+    with:
+      repository: 'https://github.com/WCX1024979076/docsify.git'
+      path: '/docs'
+    
+    -name: pull mkdoc
+    - uses: actions/checkout@v2
+    with:
+      repository: 'https://github.com/WCX1024979076/mkdocs.git'
+      path: '/site'
+
+    # 搭建环境 pyhton
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    # 安装 mkdocs
+    - name: Install mkdocs and mkdocs-material
+      run: |
+      python -m pip install mkdocs mkdocs-material
+
+    # 编译安装
+    - name : mkdocs bulid
+      run: |
+      mv ./docs/mkdocs.yml ./mkdocs.yml
+      mkdocs build
+
+    #这里是一些额外的操作,通常不需要.这里是为了把编译好的二进制程序push到原始的GitHub仓库
+    - name: CommitBinaries
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: |
+        cd ./site
+        git config user.email "1024979076@qq.com"
+        git config user.name "WCX1024979076"
+        sudo git *
+        sudo git commit -m "update mkdocs"
+        git remote set-url --push origin https://$GITHUB_TOKEN@github.com/WCX1024979076.mkdocs.git
+        git push origin master
