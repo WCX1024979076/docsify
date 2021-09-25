@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    
     #引用外部Action,拉取代码仓库到虚拟机工作目录
     - name : pull docsify
       run: |
@@ -63,3 +62,4 @@ jobs:
         git add *
         git commit -m "update mkdocs"
         git push --force https://$GITHUB_TOKEN@github.com/WCX1024979076/mkdocs.git master
+        dir
