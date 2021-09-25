@@ -14,14 +14,17 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: 'WCX1024979076/docsify'
-        path: '/docs'
     
     - name: pull mkdocs
       uses: actions/checkout@v2
       with:
         repository: 'WCX1024979076/mkdocs'
-        path: '/site'
 
+    # 安装 mkdocs
+    - name: show dir
+      run: |
+        dir
+    
     # 搭建环境 pyhton
     - name: Set up Python 3.9
       uses: actions/setup-python@v1
