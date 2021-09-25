@@ -1,0 +1,86 @@
+site_name: Tim-wcx
+
+theme:
+  name: material
+  palette:
+    primary: 'Blue Grey'
+    accent: 'Pink'
+  feature:
+    tabs: true
+  #font:
+    #text: 'Ubuntu'
+    #code: 'Ubuntu Mono'
+  language: 'zh'
+
+nav:
+  - ICPC题解:
+      - 暑假集训系列题解（十五）: problem/暑假集训系列题解（十五）.md
+      - 暑假集训系列题解（十四）: problem/暑假集训系列题解（十四）.md
+      - 暑假集训系列题解（十三）: problem/暑假集训系列题解（十三）.md
+      - 暑假集训系列题解（十二）: problem/暑假集训系列题解（十二）.md
+      - 暑假集训系列题解（十一）: problem/暑假集训系列题解（十一）.md
+      - 暑假集训系列题解（十）: problem/暑假集训系列题解（十）.md
+      - 暑假集训系列题解（九）: problem/暑假集训系列题解（九）.md
+      - 暑假集训系列题解（八）: problem/暑假集训系列题解（八）.md
+      - 暑假集训系列题解（七）: problem/暑假集训系列题解（七）.md
+      - 暑假集训系列题解（六）: problem/暑假集训系列题解（六）.md
+      - 暑假集训系列题解（五）: problem/暑假集训系列题解（五）.md
+      - 暑假集训系列题解（四）: problem/暑假集训系列题解（四）.md
+      - 暑假集训系列题解（三）: problem/暑假集训系列题解（三）.md
+      - 暑假集训系列题解（二）: problem/暑假集训系列题解（二）.md
+      - 暑假集训题解系列（一）: problem/暑假集训题解系列（一）.md
+      - 2021-02-02-2月2日题解: problem/2021-02-02-2月2日题解.md
+      - 2021-02-07-2月7日题解: problem/2021-02-07-2月7日题解.md
+      - 2021-02-02-2月2日题解: problem/2021-02-02-2月2日题解.md
+      - 2021-02-07-2月7日题解: problem/2021-02-07-2月7日题解.md
+      - 2021-02-08-2月8日题解: problem/2021-02-08-2月8日题解.md
+      - 2021-02-09-2月9日题解: problem/2021-02-09-2月9日题解.md
+      - 2021-02-12-安卓课表客户端+服务端注解: problem/2021-02-12-安卓课表客户端+服务端注解.md
+      - 2021-02-16-2月16日题解: problem/2021-02-16-2月16日题解.md
+      - 2021-02-19-2月19日题解: problem/2021-02-19-2月19日题解.md
+      - 2021-02-20-2月20日题解: problem/2021-02-20-2月20日题解.md
+      - 2021-02-22-2月22日题解: problem/2021-02-22-2月22日题解.md
+      - 2021-02-24-2月24日题解: problem/2021-02-24-2月24日题解.md
+      - 2021-02-28-2月28日题解: problem/2021-02-28-2月28日题解.md
+      - 2021-03-02-3月2日题解: problem/2021-03-02-3月2日题解.md
+      - 2021-03-07-3月7日题解: problem/2021-03-07-3月7日题解.md
+      - 2021-03-09-数论: problem/2021-03-09-数论.md
+      - 2021-06-05-6月5日题解: problem/2021-06-05-6月5日题解.md
+  - ICPC模板: icpc/README.md
+  - ICPC题单: question/README.md
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
+  - toc:
+      permalink: true
+  - footnotes
+  - meta
+  - def_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+      #emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      #emoji_generator: !!python/name:pymdownx.emoji.to_png_sprite
+      #emoji_generator: !!python/name:pymdownx.emoji.to_svg_sprite
+      #emoji_generator: !!python/name:pymdownx.emoji.to_awesome
+      #emoji_generator: !!python/name:pymdownx.emoji.to_alt
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tilde
+
+extra_javascript:
+  - 'js/extra.js'
+  - 'js/baidu-tongji.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
