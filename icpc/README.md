@@ -1428,6 +1428,8 @@ int main()
 
 有左右之分建单向边，无左右之分建无向边 答案除2
 
+一切树均为二分图
+
 二分图最大权匹配：
 
 题目：[https://uoj.ac/problem/80](https://uoj.ac/problem/80)

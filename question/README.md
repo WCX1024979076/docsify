@@ -1,5 +1,23 @@
 # 题单
 
+#### 2021秋组队训练赛第十二场
+
+##### [问题 J: Tree Constructer](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=9)
+
++ [x] 算法：二分图
+
+##### [问题 D: Fight against involution](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=3)
+
++ [x] 算法：贪心
+
+##### [问题 G: Xor Transformation](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=6)
+
++ [x] 算法：构造
+
+##### [问题 A: Matrix Equation]()
+
++ [ ] 算法：未知
+
 #### 2021秋组队训练赛第十一场
 
 ##### [问题 B: Collatz Conjecture](http://icpc.upc.edu.cn/problem.php?cid=2964&pid=1)
