@@ -1,4 +1,5 @@
 site_name: Tim-wcx
+site_url: https://github.tim-wcx.ltd/mkdocs/
 
 theme:
   name: material
