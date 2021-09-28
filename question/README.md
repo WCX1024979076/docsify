@@ -1,5 +1,19 @@
 # 题单
 
+#### 2021秋组队训练赛第十四场
+
+##### [问题 C: Hakase and Nano](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=2)
+
++ [ ] 算法：博弈论
+
+##### [问题 B: Master of Phi](http://icpc.upc.edu.cn/problem.php?cid=2968&pid=1)
+
++ [ ] 算法：数论（欧拉定理）
+
+##### [问题 K: Master of Sequence](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=10)
+
++ [ ] 算法：随机化
+
 #### 2021秋组队训练赛第十二场
 
 ##### [问题 J: Tree Constructer](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=9)
@@ -14,9 +28,9 @@
 
 + [x] 算法：构造
 
-##### [问题 A: Matrix Equation]()
+##### [问题 A: Matrix Equation](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=0)
 
-+ [ ] 算法：未知
++ [x] 算法：线性代数--高斯消元法
 
 #### 2021秋组队训练赛第十一场
 
