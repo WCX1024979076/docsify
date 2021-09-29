@@ -4,7 +4,7 @@
 
 ##### [问题 C: Hakase and Nano](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=2)
 
-+ [ ] 算法：博弈论
++ [x] 算法：博弈论
 
 ##### [问题 B: Master of Phi](http://icpc.upc.edu.cn/problem.php?cid=2968&pid=1)
 
@@ -13,6 +13,10 @@
 ##### [问题 K: Master of Sequence](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=10)
 
 + [ ] 算法：随机化
+
+##### [问题 D: Master of Random](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=3)
+
++ [ ] 算法：规律
 
 #### 2021秋组队训练赛第十二场
 
