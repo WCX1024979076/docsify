@@ -8,7 +8,7 @@
 
 ##### [问题 B: Master of Phi](http://icpc.upc.edu.cn/problem.php?cid=2968&pid=1)
 
-+ [ ] 算法：数论（欧拉定理）
++ [x] 算法：数论（欧拉定理）
 
 ##### [问题 K: Master of Sequence](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=10)
 
