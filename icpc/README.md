@@ -3555,6 +3555,78 @@ inline void Catalan_Mod(int N, LL mod)
 }
 ```
 
+#### 积性函数
+
+积性函数是指对于任意互质的整数a和b有性质f(ab)=f(a)f(b)的数论函数
+
+常用积性函数有：
+
+φ(n) －欧拉函数
+
+μ(n) －莫比乌斯函数，关于非平方数的质因子数目
+
+gcd(n,k) －最大公因子，当k固定的情况
+
+d(n) －n的正因子数目
+
+σ(n) －n的所有正因子之和
+
+#### 莫比乌斯反演
+
+**参考于**
+
+[https://zhuanlan.zhihu.com/p/45744228](https://zhuanlan.zhihu.com/p/45744228)
+
+**函数定义**
+
+![[公式]](https://www.zhihu.com/equation?tex=%5Cmu%28n%29%3D%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7B%7D+1+%26++%26+n%3D1+%5C%5C+%28-1%29%5Ek+%26++%26+n%3Dp_1p_2%5Ccdots+p_k+%5C%5C+0+%26++%26+%E5%85%B6%E4%BB%96+%5Cend%7Barray%7D+%5Cright.)
+
+**辅助定理**
+
+对于任意正整数 ![[公式]](https://www.zhihu.com/equation?tex=n) ，恒有
+
+![[公式]](https://www.zhihu.com/equation?tex=%5Csum%5Climits_%7Bd%7Cn%7D%5Cmu%28d%29%3D%5Clfloor+%5Cdfrac%7B1%7D%7Bn%7D+%5Crfloor+%3D+%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7B%7D+1+%26++%26+n+%3D+1+%5C%5C+0+%26++%26+n%3E1++%5Cend%7Barray%7D+%5Cright.)
+
+**莫比乌斯反演定理**
+
+![[公式]](https://www.zhihu.com/equation?tex=f%28n%29) 和 ![[公式]](https://www.zhihu.com/equation?tex=g%28n%29) 是定义在正整数集合上的两个函数，若
+
+![[公式]](https://www.zhihu.com/equation?tex=f%28n%29%3D%5Csum%5Climits_%7Bd%7Cn%7Dg%28d%29)
+
+则
+
+![[公式]](https://www.zhihu.com/equation?tex=g%28n%29%3D%5Csum%5Climits_%7Bd%7Cn%7D%5Cmu%28d%29f%28%5Cdfrac%7Bn%7D%7Bd%7D%29)
+
+反之亦然.
+
+**证明：**
+
+![[公式]](https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%2A%7D+++++%5Csum%5Climits_%7Bd%7Cn%7D%5Cmu%28d%29f%28%5Cdfrac%7Bn%7D%7Bd%7D%29+++%26%3D+%5Csum%5Climits_%7Bd%7Cn%7D%5Cmu%28d%29%5Csum%5Climits_%7Bk%7C%7B%5Cfrac%7Bn%7D%7Bd%7D%7D%7Dg%28k%29++%5C%5C++++%26%3D+%5Csum%5Climits_%7Bd%7Cn%7D%5Csum%5Climits_%7Bk%7C%7B%5Cfrac%7Bn%7D%7Bd%7D%7D%7Dg%28k%29%5Cmu%28d%29+%5C%5C++%26%3D+%5Csum%5Climits_%7Bk%7Cn%7D%5Csum%5Climits_%7Bd%7C%7B%5Cfrac%7Bn%7D%7Bk%7D%7D%7Dg%28k%29%5Cmu%28d%29+%5C%5C++%26%3D+%5Csum%5Climits_%7Bk%7Cn%7Dg%28k%29%5Csum%5Climits_%7Bd%7C%7B%5Cfrac%7Bn%7D%7Bk%7D%7D%7D%5Cmu%28d%29+%5C%5C++%26%3D+g%28n%29+%5Cend%7Balign%2A%7D)
+
+莫比乌斯反演实际上是容斥。
+
+**常见反演**
+
+1、
+
+![[公式]](https://www.zhihu.com/equation?tex=g%28n%29%3D%5Cmu%28n%29+%5C%5C+f%28n%29%3D%5Cleft%5C%7B+%5Cbegin%7Barray%7D%7B%7D+1+%26++%26+n+%3D+1+%5C%5C+0+%26++%26+n%3E1++%5Cend%7Barray%7D+%5Cright.+%5C%5C+g%28n%29%3D%5Csum%5Climits_%7Bd%7Cn%7D%5Cmu%28d%29f%28%5Cdfrac%7Bn%7D%7Bd%7D%29%3D%5Cmu%28d%29)
+
+所以莫比乌斯函数本身也可以反演。
+
+2、
+
+![[公式]](https://www.zhihu.com/equation?tex=f%28n%29%3Dn+%5C%5C+g%28n%29%3D%5Cphi%28n%29+%5C%5C+n%3D%5Csum%5Climits_%7Bd%7Cn%7D%5Cphi%28d%29)
+
+
+
+**线性预处理**
+
+求解区间 ![[公式]](https://www.zhihu.com/equation?tex=%5B1%2Cn%5D) 和区间 ![[公式]](https://www.zhihu.com/equation?tex=%5B1%2Cm%5D) 上互质的数的个数。
+
+![[公式]](https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%2A%7D+++%5Csum%5Climits_%7Bi%3D1%7D%5En%5Csum%5Climits_%7Bj%3D1%7D%5Em%5Bgcd%28i%2Cj%29%3D%3D1%5D++%26%3D+%5Csum%5Climits_%7Bi%3D1%7D%5En%5Csum%5Climits_%7Bj%3D1%7D%5Em+%5Csum%5Climits_%7Bd%7Cgcd%28i%2Cj%29%7D%5Cmu%28d%29++%5C%5C+%26%3D+%5Csum%5Climits_%7Bi%3D1%7D%5En%5Csum%5Climits_%7Bj%3D1%7D%5Em+%5Csum%5Climits_%7Bd%7Ci+%5C%2C+and+%5C%2Cd%7Cj%7D%5Cmu%28d%29+%5C%5C+%26%3D+%5Csum%5Climits_%7Bd%3D1%7D%5E%7Bmin%28n%2Cm%29%7D%5Cmu%28d%29%5Csum%5Climits_%7Bi%3D1%7D%5E%7B%5Clfloor+%5Cfrac%7Bn%7D%7Bd%7D+%5Crfloor%7D%5Csum%5Climits_%7Bj%3D1%7D%5E%7B%5Clfloor+%5Cfrac%7Bm%7D%7Bd%7D+%5Crfloor%7D+1+%5C%5C+%26%3D+%5Csum%5Climits_%7Bd%3D1%7D%5E%7Bmin%28n%2Cm%29%7D%5Cmu%28d%29%5Clfloor+%5Cfrac%7Bn%7D%7Bd%7D+%5Crfloor+%5Clfloor+%5Cfrac%7Bm%7D%7Bd%7D+%5Crfloor+%5Cend%7Balign%2A%7D)
+
+这样，我们能够在 ![[公式]](https://www.zhihu.com/equation?tex=%5Cmathcal%7BO%7D%28min%28n%2Cm%29%29%E2%80%8B) 的时间内完成单词查询。还可以继续优化， ![[公式]](https://www.zhihu.com/equation?tex=%5Clfloor+%5Cdfrac%7Bn%7D%7Bd%7D+%5Crfloor%E2%80%8B) 的值最多有 ![[公式]](https://www.zhihu.com/equation?tex=2%5Csqrt%7Bn%7D%E2%80%8B) 种， ![[公式]](https://www.zhihu.com/equation?tex=%5Clfloor+%5Cdfrac%7Bm%7D%7Bd%7D+%5Crfloor) 最多有 ![[公式]](https://www.zhihu.com/equation?tex=2%5Csqrt%7Bm%7D%E2%80%8B) 种，并且相同取值对应的 ![[公式]](https://www.zhihu.com/equation?tex=d) 是一段连续的区间，所以我们可以把区间最多分成 ![[公式]](https://www.zhihu.com/equation?tex=2%28%5Csqrt%7Bn%7D%2B%5Csqrt%7Bm%7D%29%E2%80%8B) 个，在预处理出 ![[公式]](https://www.zhihu.com/equation?tex=%5Cmu%28i%29%E2%80%8B) 的前缀和之后，可以在 ![[公式]](https://www.zhihu.com/equation?tex=%5Cmathcal%7BO%7D%282%28%5Csqrt%7Bn%7D%2B%5Csqrt%7Bm%7D%29%29) 的时间复杂度完成单次查询。
+
 ### 动态规划
 
 ####  最长上升子序列
