@@ -16,7 +16,7 @@
 
 ##### [问题 D: Master of Random](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=3)
 
-+ [ ] 算法：规律
++ [x] 算法：规律
 
 #### 2021秋组队训练赛第十二场
 
