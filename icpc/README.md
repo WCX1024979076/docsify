@@ -2882,6 +2882,139 @@ int main()
 }
 ```
 
+#### 文法分析
+
+参考链接：
+
+[https://blog.csdn.net/qq_40736036/article/details/89110584](https://blog.csdn.net/qq_40736036/article/details/89110584)
+
+![T__XCQ__D@B__P9T27WMWJF.png](https://i.loli.net/2021/10/03/b7pjQ1HYTIWVJfM.png)
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+typedef unsigned long long ull;
+typedef long long ll;
+const ll mod = 10000;
+char c[5000500] = {0};
+struct grammer
+{
+    pair<char *, ll> Q(char *p)
+    {
+        pair<char *, ll> ans1 = E(p);
+
+        if (ans1.first == NULL)
+            return {NULL, 0};
+        ans1.second %= mod;
+        return ans1;
+    }
+    pair<char *, ll> E(char *p)
+    {
+        pair<char *, ll> ans1 = T(p);
+        if (ans1.first == NULL)
+            return {NULL, 0};
+        while (*ans1.first == '+' || *ans1.first == '-')
+        {
+            pair<char *, ll> ans2 = T(ans1.first + 1);
+            if (ans2.first == NULL)
+                return {NULL, 0};
+            if (*ans1.first == '+')
+                ans1.second += ans2.second;
+            else if (*ans1.first == '-')
+                ans1.second -= ans2.second;
+            ans1.second = (ans1.second % mod + mod) % mod;
+            ans1.first = ans2.first;
+        }
+        return ans1;
+    }
+    pair<char *, ll> T(char *p)
+    {
+        pair<char *, ll> ans1 = F(p);
+        if (ans1.first == NULL)
+            return {NULL, 0};
+        while (*ans1.first == '*')
+        {
+            pair<char *, ll> ans2 = F(ans1.first + 1);
+
+            if (ans2.first == NULL)
+                return {NULL, 0};
+            ans1.second *= ans2.second;
+            ans1.second %= mod;
+            ans1.first = ans2.first;
+        }
+        return ans1;
+    }
+    pair<char *, ll> F(char *p)
+    {
+        if (*p >= '0' || *p <= '9')
+        {
+            return N(p);
+        }
+        else if (*p == '-')
+        {
+            pair<char *, ll> ans1 = F(p + 1);
+            if (ans1.first == NULL)
+                return {NULL, 0};
+            return {ans1.first, (-ans1.second % mod + mod) % mod};
+        }
+        else if (*p == '(')
+        {
+            pair<char *, ll> ans1 = E(p + 1);
+            if (ans1.first == NULL)
+                return {NULL, 0};
+            if (*ans1.first == ')')
+                return {ans1.first + 1, ans1.second % mod};
+            else
+                return {NULL, 0};
+        }
+        else
+        {
+            return {NULL, 0};
+        }
+    }
+    pair<char *, ll> N(char *p)
+    {
+        if (*p == '0')
+        {
+            // if (*(p + 1) >= '0' || *(p + 1) <= '9')
+            //     return {NULL, 0};
+            // else
+            return {p + 1, 0};
+        }
+        else if (*p >= '1' && *p <= '9')
+        {
+            pair<char *, ll> ans1 = B(p);
+            if (ans1.first == NULL)
+            {
+                return {NULL, 0};
+            }
+            return {ans1.first, ans1.second % mod};
+        }
+        else
+        {
+            return {NULL, 0};
+        }
+    }
+    pair<char *, ll> B(char *p)
+    {
+        ll sum = 0;
+        while (*p >= '0' && *p <= '9')
+        {
+            sum = sum * 10 + *p - '0';
+            p++;
+            sum %= mod;
+        }
+        return {p, sum % mod};
+    }
+} Grammer;
+int main()
+{
+    scanf("%s", c + 1);
+    ll ans = (Grammer.Q(c + 1).second % mod + mod) % mod;
+    printf("%lld\n", ans);
+}
+```
+
 ### 数论
 
 #### 整数分块
