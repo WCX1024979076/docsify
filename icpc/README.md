@@ -3781,6 +3781,210 @@ void get_mu(int n)
  }
 ```
 
+#### FFT和NNT模板
+
+参考链接：
+
+[https://www.acwing.com/file_system/file/content/whole/index/content/1563813/](https://www.acwing.com/file_system/file/content/whole/index/content/1563813/)
+
+[https://blog.csdn.net/hzf0701/article/details/119428159](https://blog.csdn.net/hzf0701/article/details/119428159)
+
+[https://blog.csdn.net/zz_1215/article/details/40430041](https://blog.csdn.net/zz_1215/article/details/40430041)
+
+[https://www.luogu.com.cn/problem/P3803](https://www.luogu.com.cn/problem/P3803)
+
+NTT 快速数论变换取模多项式模板
+
+ ```c++
+ #include <bits/stdc++.h>
+ using namespace std;
+ typedef long long ll;
+ const ll mod = 998244353;
+ const ll G = 3;
+ ll n, m, L, R[6005000] = {0};
+ ll a[6005000] = {0}, b[6005000] = {0}, inv[6005000] = {0};
+ ll qpow(ll a, ll b)
+ {
+     ll ans1 = 1, ans2 = a;
+     while (b != 0)
+     {
+         if (b & 1)
+             ans1 = ans1 * ans2 % mod;
+         ans2 = ans2 * ans2 % mod;
+         b /= 2;
+     }
+     return ans1 % mod;
+ }
+ 
+ void NTT(ll *a, ll f)
+ {
+     for (ll i = 0; i < n; i++)
+     {
+         if (i < R[i])
+             swap(a[i], a[R[i]]);
+     }
+     for (ll i = 1; i < n; i <<= 1)
+     {
+         ll gn = qpow(G, (mod - 1) / (i << 1));
+         for (ll j = 0; j < n; j += (i << 1))
+         {
+             ll g = 1;
+             for (ll k = 0; k < i; k++, g = g * gn % mod)
+             {
+                 ll x = a[j + k], y = g * a[j + k + i] % mod;
+                 a[j + k] = (x + y) % mod;
+                 a[j + k + i] = (x - y + mod) % mod;
+             }
+         }
+     }
+     if (f == 1)
+         return;
+     ll inv = qpow(n, mod - 2);
+     reverse(a + 1, a + n);
+     for (ll i = 0; i < n; i++)
+         a[i] = 1ll * a[i] * inv % mod;
+ }
+ void solve(ll *A, ll *B)
+ {
+     m = n + m;
+     for (n = 1; n <= m; n <<= 1)
+         L++;
+     for (int i = 0; i < n; i++)
+         R[i] = (R[i >> 1] >> 1) | ((i & 1) << (L - 1));
+     NTT(A, 1);
+     NTT(B, 1);
+     for (int i = 0; i < n; i++)
+         A[i] = (A[i] % mod * B[i] % mod + mod) % mod;
+     NTT(A, -1);
+ }
+ int main()
+ {
+     scanf("%lld%lld", &n, &m);
+     for (ll i = 0; i <= n; i++)
+         scanf("%lld", &a[i]);
+     for (ll i = 0; i <= m; i++)
+         scanf("%lld", &b[i]);
+     solve(a, b);
+     for (ll i = 0; i <= m; i++)
+         printf("%lld ", a[i]);
+     return 0;
+ }
+ ```
+
+FFT快速傅里叶变换模板
+
+```c++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef pair<int, int> pii;
+typedef long long ll;
+const int N = 6e6 + 10;
+const int P = 1e9 + 7;
+const int INF = 0x3f3f3f3f;
+const double PI = acos(-1.0); //圆周率PI。
+
+struct Complex
+{
+    double x, y; //复数，x代表实部，y代表虚部。
+    Complex(double _x = 0, double _y = 0)
+    {
+        x = _x, y = _y;
+    }
+} a[N], b[N];                 //多项式a和b，相乘。
+int n, m, l, r[N], limit = 1; //n为a的次数,m为b的次数。limit即为最大限制。2^n次方，而l为二进制的位数
+//运算符重载。
+Complex operator+(Complex a, Complex b)
+{
+    return Complex(a.x + b.x, a.y + b.y);
+}
+Complex operator-(Complex a, Complex b)
+{
+    return Complex(a.x - b.x, a.y - b.y);
+}
+//复数相乘，则模长相乘，幅度相加。
+Complex operator*(Complex a, Complex b)
+{
+    return Complex(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x);
+}
+void fft(Complex *A, int type)
+{
+    for (int i = 0; i < limit; ++i)
+    {
+        if (i < r[i])
+            swap(A[i], A[r[i]]);
+        //求出要迭代的区间。小于r[i]时才交换，防止同一个元素交换两次，回到原来的位置。
+    }
+    //从底层往上合并。
+    for (int mid = 1; mid < limit; mid <<= 1)
+    {
+        //待合并区间长度的一半，最开始是两个长度为1的序列合并,mid = 1;
+        Complex Wn(cos(PI / mid), type * sin(PI / mid)); //单位根。
+        for (int len = mid << 1, j = 0; j < limit; j += len)
+        {
+            //len是区间的长度，j是当前的位置，也就是合并到了哪一位。
+            Complex w(1, 0); //幂，一直乘，得到平方，三次方。
+            for (int k = 0; k < mid; ++k, w = w * Wn)
+            {
+                //枚举左半部分。蝴蝶变换得到右半部分的答案。w为wn * k
+                Complex x = A[j + k], y = w * A[j + mid + k]; //左半部分和右半部分。
+                A[j + k] = x + y;                             //左边加。
+                A[j + mid + k] = x - y;                       //右边减。
+            }
+        }
+    }
+    if (type == 1)
+        return;
+    for (int i = 0; i <= limit; ++i)
+    {
+        a[i].x /= limit;
+        //最后需要除以limit也就是补成了2的整数幂。将点值转换为系数。
+    }
+}
+void solve()
+{
+    while (limit <= n + m)
+    {
+        limit <<= 1, l++;
+    }
+    //初始化r数组。
+    for (int i = 0; i < limit; ++i)
+    {
+        r[i] = (r[i >> 1] >> 1) | ((i & 1) << (l - 1));
+    }
+    fft(a, 1); //将a的系数转化为点值表示，
+    fft(b, 1); //将b的系数转化为点值表示。
+    for (int i = 0; i <= limit; ++i)
+    {
+        //对应项相乘，得到点值表示的解。
+        a[i] = a[i] * b[i];
+    }
+    fft(a, -1);
+    for (int i = 0; i <= n + m; ++i)
+    {
+        //取出来除2，加上0.5四舍五入。
+        printf("%d ", (int)(a[i].x + 0.5));
+    }
+    printf("\n");
+}
+int main()
+{
+    scanf("%d%d", &n, &m);
+    //读入多项式的每一项。
+    for (int i = 0; i <= n; ++i)
+    {
+        scanf("%lf", &a[i].x);
+    }
+    for (int i = 0; i <= m; ++i)
+    {
+        scanf("%lf", &b[i].x);
+    }
+    solve();
+    return 0;
+}
+```
+
 ### 动态规划
 
 ####  最长上升子序列
