@@ -1,4 +1,4 @@
-site_name: Tim-wcx
+site_name: Tim-Wcx
 site_url: https://github.tim-wcx.ltd/mkdocs/
 
 theme:
@@ -6,8 +6,8 @@ theme:
   palette:
     primary: 'Blue Grey'
     accent: 'Pink'
-  feature:
-    tabs: true
+  features:
+    - navigation.tabs
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
