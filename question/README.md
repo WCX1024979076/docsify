@@ -1,5 +1,53 @@
 # 题单
 
+#### 2021秋组队训练赛第十五场
+
+##### [问题 A: Almost Origami](http://icpc.upc.edu.cn/problem.php?cid=2970&pid=0)
+
++ [ ] 算法：计算几何
+
+##### [问题 D: Dividing Candy](http://icpc.upc.edu.cn/problem.php?cid=2970&pid=3)
+
++ [x] 算法：模拟
+
+##### [问题 C: Crisis at the Wedding](http://icpc.upc.edu.cn/problem.php?cid=2970&pid=2)
+
++ [x] 算法：模拟
+
+##### [问题 E: Excellent Views](http://icpc.upc.edu.cn/problem.php?cid=2971&pid=4)
+
++ [x] 算法：单调栈
+
+##### [问题 H: Halting Wolf](http://icpc.upc.edu.cn/problem.php?cid=2971&pid=7)
+
++ [x] 算法：网络流
+
+##### [问题 J: Job Allocator](http://icpc.upc.edu.cn/problem.php?cid=2971&pid=9)
+
++ [x] 算法：暴力枚举
+
+##### [问题 F: Fascinating Partitions](http://icpc.upc.edu.cn/problem.php?cid=2971&pid=5)
+
++ [ ] 算法：DP+优化
+
+#### 2021秋组队训练赛第十二场
+
+##### [问题 J: Tree Constructer](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=9)
+
++ [x] 算法：二分图
+
+##### [问题 D: Fight against involution](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=3)
+
++ [x] 算法：贪心
+
+##### [问题 G: Xor Transformation](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=6)
+
++ [x] 算法：构造
+
+##### [问题 A: Matrix Equation](http://icpc.upc.edu.cn/problem.php?cid=2974&pid=0)
+
++ [x] 算法：线性代数--高斯消元法
+
 #### 2021秋组队训练赛第十四场
 
 ##### [问题 C: Hakase and Nano](http://icpc.upc.edu.cn/problem.php?cid=2969&pid=2)

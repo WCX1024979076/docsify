@@ -1952,6 +1952,97 @@ int main()
 }
 ```
 
+#### 分层最短路
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef pair<int, int> pii;
+const int N = 100000 + 5;
+const int K = 10 + 5;
+const ll inf = 0x3f3f3f3f3f3f3f3f;
+ 
+vector< pii > e[N];
+ 
+struct Info {
+    int pos, num;
+    ll val;
+    inline Info(){}
+    inline Info(int _pos, int _num, ll _val) {
+        pos = _pos, num = _num, val = _val;
+    }
+    inline bool operator < (const Info & b) const {
+        return val > b.val;
+    }
+};
+ 
+ll f[N][K];
+bool vis[N][K];
+priority_queue<Info> q;
+ 
+class TaskL {
+public:
+    void solve(std::istream& in, std::ostream& out) {
+        int T;
+        in >> T;
+        while (T--) {
+            int n, m, k;
+            in >> n >> m >> k;
+            while (q.size()) q.pop();
+            for (int i = 1; i <= n; ++i) {
+                e[i].clear();
+                for (int j = 0; j <= k; ++j) {
+                    f[i][j] = inf;
+                    vis[i][j] = false;
+                }
+            }
+            for (int i = 1, x, y, z; i <= m; ++i) {
+                in >> x >> y >> z;
+                e[x].push_back({y, z});
+            }
+            f[1][0] = 0;
+            q.push(Info(1, 0, 0));
+            while (q.size()) {
+                Info now = q.top(); q.pop();
+                if (vis[now.pos][now.num] == true) continue;
+                vis[now.pos][now.num] = true;
+                for (int i = 0; i < e[now.pos].size(); ++i) {
+                    int to = e[now.pos][i].first, val = e[now.pos][i].second;
+                    if (f[to][now.num] > f[now.pos][now.num] + val) {
+                        f[to][now.num] = f[now.pos][now.num] + val;
+                        q.push(Info(to, now.num, f[to][now.num]));
+                    }
+                    if (now.num < k && f[to][now.num + 1] > f[now.pos][now.num]) {
+                        f[to][now.num + 1] = f[now.pos][now.num];
+                        q.push(Info(to, now.num + 1, f[to][now.num + 1]));
+                    }
+                }
+            }
+            ll ans = inf;
+            for (int i = 0; i <= k; ++i) {
+                ans = min(ans, f[n][i]);
+            }
+            out << ans << endl;
+        }
+    }
+};
+ 
+ 
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    TaskL solver;
+    std::istream& in(std::cin);
+    std::ostream& out(std::cout);
+    solver.solve(in, out);
+    return 0;
+}
+```
+
 ### 数据结构
 
 ####  树状数组前缀和
