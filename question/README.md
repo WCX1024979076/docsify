@@ -1,5 +1,35 @@
 # 题单
 
+#### 2021秋组队训练赛第十八场
+
+##### [问题 A: Radio Prize](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=0)
+
++ [x] 算法：树上DP
+
+##### [问题 B: Perfect Flush](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=1)
+
++ [x] 算法：模拟
+
+##### [问题 C: Coloring Contention](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=2)
+
++ [x] 算法：模拟
+
+##### [问题 L: Party Invitations](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=11)
+
++ [x] 算法：BFS
+
+##### [问题 M: Liars and Truth Tellers](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=12)
+
++ [x] 算法：并查集
+
+##### [问题 K: Seating](http://icpc.upc.edu.cn/problem.php?cid=2987&pid=10)
+
++ [x] 算法：线段树维护前缀
+
+##### [问题 J: Interstellar Travel](http://icpc.upc.edu.cn/problem.php?cid=2988&pid=9)
+
++ [ ] 算法：差分
+
 #### 2021秋组队训练赛第十五场
 
 ##### [问题 A: Almost Origami](http://icpc.upc.edu.cn/problem.php?cid=2970&pid=0)
