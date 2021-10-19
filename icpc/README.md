@@ -2043,6 +2043,171 @@ int main()
 }
 ```
 
+#### LCT 动态树
+
+参考链接：
+
+[https://www.luogu.com.cn/problem/P3690](https://www.luogu.com.cn/problem/P3690)
+
+[https://www.cnblogs.com/zwfymqz/p/7896036.html#!comments](https://www.cnblogs.com/zwfymqz/p/7896036.html#!comments)
+
+[https://www.cnblogs.com/zzy2005/p/10312977.html](https://www.cnblogs.com/zzy2005/p/10312977.html)
+
+[https://www.cnblogs.com/JeremyGJY/p/5921594.html](https://www.cnblogs.com/JeremyGJY/p/5921594.html)
+
+[https://blog.csdn.net/qq_36551189/article/details/79152612](https://blog.csdn.net/qq_36551189/article/details/79152612)
+
+```c++
+#pragma GCC optimize(3, "Ofast", "inline")
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll f[100500] = {0}, c[100500][2] = {0}, v[100500] = {0}, s[100500] = {0}, st[100500] = {0};
+bool r[100500] = {0};
+//判断节点是否为一个Splay的根
+inline bool nroot(register ll x)
+{
+    return c[f[x]][0] == x || c[f[x]][1] == x;
+    //原理为如果连的是轻边，他的父亲的儿子里没有它
+}
+//上传信息
+inline void pushup(ll x)
+{
+    s[x] = s[c[x][0]] ^ s[c[x][1]] ^ v[x];
+}
+//翻转操作
+inline void pushr(register ll x)
+{
+    register ll t = c[x][0];
+    c[x][0] = c[x][1];
+    c[x][1] = t;
+    r[x] ^= 1;
+}
+//判断并释放懒标记
+inline void pushdown(register ll x)
+{
+    if (r[x])
+    {
+        if (c[x][0])
+            pushr(c[x][0]);
+        if (c[x][1])
+            pushr(c[x][1]);
+        r[x] = 0;
+    }
+}
+//一次旋转
+inline void rotate(register ll x)
+{
+    register ll y = f[x], z = f[y], k = c[y][1] == x, w = c[x][!k];
+    if (nroot(y))
+        c[z][c[z][1] == y] = x;
+    c[x][!k] = y;
+    c[y][k] = w;
+    if (w)
+        f[w] = y;
+    f[y] = x;
+    f[x] = z;
+    pushup(y);
+}
+//只传了一个参数，因为所有操作的目标都是该Splay的根
+inline void splay(register ll x)
+{
+    register ll y = x, z = 0;
+    st[++z] = y; //st为栈，暂存当前点到根的整条路径，pushdown时一定要从上往下放标记
+    while (nroot(y))
+        st[++z] = y = f[y];
+    while (z)
+        pushdown(st[z--]);
+    while (nroot(x))
+    {
+        y = f[x];
+        z = f[y];
+        if (nroot(y))
+            rotate((c[y][0] == x) ^ (c[z][0] == y) ? x : y);
+        rotate(x);
+    }
+    pushup(x);
+}
+//访问
+inline void access(register ll x)
+{
+    for (register ll y = 0; x; x = f[y = x])
+        splay(x), c[x][1] = y, pushup(x);
+}
+//换根
+inline void makeroot(register ll x)
+{
+    access(x);
+    splay(x);
+    pushr(x);
+}
+//找根（在真实的树中的）
+inline ll findroot(register ll x)
+{
+    access(x);
+    splay(x);
+    while (c[x][0])
+        pushdown(x), x = c[x][0];
+    splay(x);
+    return x;
+}
+//提取路径
+inline void split(register ll x, register ll y)
+{
+    makeroot(x);
+    access(y);
+    splay(y);
+}
+//连边
+inline void link(register ll x, register ll y)
+{
+    makeroot(x);
+    if (findroot(y) != x)
+        f[x] = y;
+}
+//断边
+void cut(register ll x, register ll y)
+{
+    makeroot(x);
+    if (findroot(y) == x && f[y] == x && !c[y][0])
+    {
+        f[y] = c[x][1] = 0;
+        pushup(x);
+    }
+}
+
+int main()
+{
+    int n, m;
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= n; i++) //给定 n 个点以及每个点的权值
+        scanf("%d", &v[i]);
+    for (int i = 1; i <= m; i++)
+    {
+        int opt, x, y;
+        scanf("%d%d%d", &opt, &x, &y);
+        if (opt == 0) //代表询问从 x 到 y 的路径上的点的权值的 xor 和。保证 x 到 y 是联通的。
+        {
+            split(x, y);
+            printf("%d\n", s[y]);
+        }
+        else if (opt == 1) //代表连接 x 到 y，若 x 到 y 已经联通则无需连接。
+        {
+            link(x, y);
+        }
+        else if (opt == 2) //代表删除边 (x,y)，不保证边 (x,y) 存在。
+        {
+            cut(x, y);
+        }
+        else if (opt == 3) //代表将点 x 上的权值变成 y。
+        {
+            splay(x);
+            v[x] = y;
+        }
+    }
+}
+```
+
 ### 数据结构
 
 ####  树状数组前缀和
