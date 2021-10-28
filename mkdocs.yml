@@ -53,7 +53,7 @@ nav:
       - 2021-06-05-6月5日题解: problem/2021-06-05-6月5日题解.md
   - ICPC模板: icpc/README.md
   - ICPC题单: question/README.md
-  - 课程复习: course/README.md
+  - 课程复习:
       - 数字图像处理: course/数字图像处理.md
       - 现代密码学: course/现代密码学.md
 
