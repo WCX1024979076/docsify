@@ -3271,6 +3271,16 @@ int main()
 }
 ```
 
+#### AC自动机
+
+参考链接：
+
+[https://www.cnblogs.com/nullzx/p/7499397.html](https://www.cnblogs.com/nullzx/p/7499397.html)
+
+[https://zhuanlan.zhihu.com/p/80325757](https://zhuanlan.zhihu.com/p/80325757)
+
+[https://oi-wiki.org/string/ac-automaton/](https://oi-wiki.org/string/ac-automaton/)
+
 ### 数论
 
 #### 整数分块
