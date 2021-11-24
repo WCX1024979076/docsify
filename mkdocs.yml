@@ -56,6 +56,8 @@ nav:
   - 课程复习:
       - 数字图像处理: course/数字图像处理.md
       - 现代密码学: course/现代密码学.md
+      - 软件工程: course/软件工程.md
+
 
 markdown_extensions:
   - admonition
