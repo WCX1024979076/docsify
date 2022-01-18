@@ -52,8 +52,8 @@ nav:
       - 2021-03-09-数论: problem/2021-03-09-数论.md
       - 2021-06-05-6月5日题解: problem/2021-06-05-6月5日题解.md
   - ICPC模板:
-      - 个人模板: course/个人模板.md
-      - kuangbin模板: course/kuangbin模板.md
+      - 个人模板: icpc/个人模板.md
+      - kuangbin模板: icpc/kuangbin模板.md
   - ICPC题单: question/README.md
   - 课程复习:
       - 数字图像处理: course/数字图像处理.md
