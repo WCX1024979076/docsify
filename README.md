@@ -2,7 +2,7 @@
 
 #### 友情链接：
 
-个人导航界面：[http://8.131.54.221:7000/](http://8.131.54.221:7000/)
+个人导航界面：[http://ubuntu.tim-wcx.ltd/](http://ubuntu.tim-wcx.ltd/)
 
 Gtihub主页：https://github.com/WCX1024979076
 
@@ -21,11 +21,6 @@ Github图床：https://github.com/WCX1024979076/image1
 docsify：https://docsify.js.org/
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=1302286775&auto=0&height=66"></iframe>
-
-
-```my_html
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=1302286775&auto=0&height=66"></iframe>
-```
 
 
 

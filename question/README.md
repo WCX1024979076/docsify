@@ -461,16 +461,11 @@
 算法：大模拟，可以先放一放
 
 
-```my_html
 <script>
 	console.log("Hello World!");
 </script>
-```
 
 
-```my_html
 <script>
 	console.log("你好啊！");
 </script>
-```
-
