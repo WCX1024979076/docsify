@@ -1,4 +1,4 @@
-# Tim-wcx
+# Tim-Wcx
 
 ## 个人文档网站
 [GitHub](https://github.com/WCX1024979076/docsify/)
