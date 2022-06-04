@@ -12,6 +12,8 @@ theme:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
   language: 'zh'
+  icon:
+    logo: material/library-shelves
 
 nav:
   - ICPC题解:
