@@ -6,4 +6,5 @@
   * [计算机图形学](/course/计算机图形学.md)
   * [计算机操作系统](/course/计算机操作系统.md)
   * [单片机](/course/单片机.md)
+  * [PDF划词翻译](/course/PDF划词翻译.md)
 
