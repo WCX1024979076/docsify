@@ -3,3 +3,5 @@
 * [ICPC题单](/question/)
 * [课程复习](/course/)
 * [csdn导出](/csdn/)
+* [个人计划](/plan/)
+* [关于](/about/)
