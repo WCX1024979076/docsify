@@ -21,6 +21,9 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.footer
+    - content.code.copy
+    - content.code.select
+    
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
