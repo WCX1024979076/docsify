@@ -6,8 +6,17 @@ theme:
   palette:
     primary: 'Blue Grey'
     accent: 'Pink'
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.top
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
