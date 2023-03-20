@@ -58,6 +58,7 @@ nav:
       - kuangbin模板: icpc/kuangbin模板.md
   - ICPC题单: question/README.md
   - 课程复习:
+      - 图优算法笔记: course/图优算法笔记.md
       - 数字图像处理: course/数字图像处理.md
       - 现代密码学: course/现代密码学.md
       - 软件工程: course/软件工程.md
