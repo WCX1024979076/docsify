@@ -4,16 +4,19 @@ site_url: https://github.tim-wcx.ltd/mkdocs/
 theme:
   name: material
   palette:
-    primary: 'Blue Grey'
-    accent: 'Pink'
-    - scheme: default
+    - scheme: default # 日间模式
+      primary: grey # 上方的
+      accent: cyan # 链接等可交互元件的高亮色
       toggle:
-        icon: material/brightness-7 
-        name: Switch to dark mode
-    - scheme: slate
+        icon: material/weather-night # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - scheme: slate # 夜间模式
+      primary: black 
+      accent: cyan
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/weather-sunny
+        name: 切换至日间模式
+        
   features:
     - navigation.tabs
     - navigation.top
