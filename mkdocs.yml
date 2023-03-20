@@ -23,7 +23,7 @@ theme:
     - navigation.footer
     - content.code.copy
     - content.code.select
-    
+    - content.code.annotate
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
