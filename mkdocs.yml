@@ -5,7 +5,7 @@ theme:
   name: material
   palette:
     - scheme: default # 日间模式
-      primary: white # 上方的
+      primary: indigo # 上方的
       accent: cyan # 链接等可交互元件的高亮色
       toggle:
         icon: material/weather-night # 图标
@@ -163,6 +163,11 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.snippets
 
 extra_javascript:
   - 'js/extra.js'
