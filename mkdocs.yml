@@ -5,7 +5,7 @@ theme:
   name: material
   palette:
     - scheme: default # 日间模式
-      primary: grey # 上方的
+      primary: white # 上方的
       accent: cyan # 链接等可交互元件的高亮色
       toggle:
         icon: material/weather-night # 图标
@@ -20,6 +20,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - navigation.footer
   #font:
     #text: 'Ubuntu'
     #code: 'Ubuntu Mono'
