@@ -12,7 +12,7 @@
 
 ### 要实现的接口
 
-``` C++
+```c++
 struct rt_wlan_dev_ops
 {
     rt_err_t (*wlan_init)(struct rt_wlan_device *wlan); // WIFI初始化
