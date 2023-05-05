@@ -40,6 +40,12 @@ BL808 WIFI的实现？
 
 3、活塞气举系统
 
+整理一份Word文档，关于梯度下降法
+
+https://blog.csdn.net/qq_35240204/article/details/106864745
+
+https://blog.csdn.net/weixin_42018112/article/details/88096070
+
 登陆界面
 
 ~~https://ubuntu.tim-wcx.ltd/oil/~~

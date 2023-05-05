@@ -4,7 +4,7 @@
 
 个人博客：[https://tim-wcx.ltd/](https://tim-wcx.ltd/)
 
-Gtihub主页：[https://github.com/WCX1024979076](https://github.com/WCX1024979076)
+Github主页：[https://github.com/WCX1024979076](https://github.com/WCX1024979076)
 
 Gitee主页：[https://gitee.com/WCX1024979076](https://gitee.com/WCX1024979076)
 
