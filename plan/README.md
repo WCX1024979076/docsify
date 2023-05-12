@@ -10,9 +10,11 @@
 
 ~~BL808 FLASH的实现？~~
 
-ESP32-C3的WIFI/GPIO/UART/SPI实现？
+ESP32-C3的WIFI/GPIO/UART/SPI/WDG实现？
 
 BL808 WIFI的实现？
+
+RT Smart GNU项目的迁移？
 
 2、图优部分
 
@@ -40,11 +42,11 @@ BL808 WIFI的实现？
 
 3、活塞气举系统
 
-整理一份Word文档，关于梯度下降法
+~~整理一份Word文档，关于梯度下降法~~
 
-https://blog.csdn.net/qq_35240204/article/details/106864745
+~~https://blog.csdn.net/qq_35240204/article/details/106864745~~
 
-https://blog.csdn.net/weixin_42018112/article/details/88096070
+~~https://blog.csdn.net/weixin_42018112/article/details/88096070~~
 
 登陆界面
 
