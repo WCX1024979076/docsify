@@ -10,3 +10,4 @@
   * [PDF划词翻译](/course/PDF划词翻译.md)
   * [博流WIFI资料](/course/博流WIFI资料.md)
   * [makefile学习笔记](/course/make.md)
+  * [RT_Smart中minizip移植记录](/course/RT_Smart中minizip移植记录.md)
