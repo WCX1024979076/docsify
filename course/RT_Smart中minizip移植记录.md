@@ -19,14 +19,17 @@ toolchain("aarch64-linux-musleabi")
 	os.setenv("PROJ_DIR", os.projectdir())  --For lua embed build script
         toolchain:load_cross_toolchain()
         toolchain:set("toolset", "cxx", "aarch64-linux-musleabi-g++")
+        toolchain:set("toolset", "cc", "aarch64-linux-musleabi-gcc")
 	    -- add flags for aarch64
-        toolchain:add("cxflags",     "-march=armv8-a -D__RTTHREAD__  -Wall -n --static", {force = true})                                             
+        toolchain:add("cxflags",     "-march=armv8-a -D__RTTHREAD__  -Wall -n --static -DHAVE_CCONFIG_H", {force = true})                                             
         toolchain:add("ldflags",     "-march=armv8-a -D__RTTHREAD__  -Wall -n --static", {force = true})  
         toolchain:add("ldflags",     "-T $(projectdir)/../../linker_scripts/aarch64/link.lds", {force = true})
         if not is_config("pkg_searchdirs", "dropbear") then
             toolchain:add("ldflags",     "-L$(projectdir)/../../sdk/rt-thread/lib/aarch64/cortex-a -Wl,--whole-archive -lrtthread -Wl,--no-whole-archive", {force = true})
         end
         toolchain:add("includedirs", "$(projectdir)/../../sdk/rt-thread/include", {force = true})
+        toolchain:add("includedirs", "$(projectdir)/../../", {force = true})
+        toolchain:add("includedirs", "$(projectdir)", {force = true})
         toolchain:add("includedirs", "$(projectdir)/../../sdk/rt-thread/components/dfs", {force = true})
         toolchain:add("includedirs", "$(projectdir)/../../sdk/rt-thread/components/drivers", {force = true})
         toolchain:add("includedirs", "$(projectdir)/../../sdk/rt-thread/components/finsh", {force = true})
@@ -48,8 +51,42 @@ add_requires("minizip")
 target("minizip")
   set_toolchains("aarch64-linux-musleabi")
   set_kind("binary")
-  add_files("src/*.c")
+  add_files("src/minizip.c")
   add_packages("minizip")
+
+target("miniunz")
+  set_toolchains("aarch64-linux-musleabi")
+  set_kind("binary")
+  add_files("src/miniunz.c")
+  add_packages("minizip")
+
+target("minizip_test")
+  set_toolchains("aarch64-linux-musleabi")
+  set_kind("binary")
+  add_files("src/main.c")
+  add_packages("minizip")
+```
+
+配置`cconfig.h`，这个文件如果用scons会自动生成，但是在xmake工程当中不会自动生成，所以需要自己实现
+
+```c
+#ifndef CCONFIG_H__
+#define CCONFIG_H__
+/* Automatically generated file; DO NOT EDIT. */
+/* compiler configure file for RT-Thread in GCC/MUSL */
+
+#define HAVE_SYS_SIGNAL_H 1
+#define HAVE_SYS_SELECT_H 1
+#define HAVE_PTHREAD_H 1
+
+#define HAVE_FDSET 1
+
+#define HAVE_SIGACTION 1
+#define HAVE_SIGEVENT 1
+#define HAVE_SIGINFO 1
+#define HAVE_SIGVAL 1
+
+#endif
 ```
 
 3、编写`src/main.c`程序，这里我用`minizip`实现了压缩`example.txt`到`example.zip`
@@ -111,6 +148,7 @@ int main()
 4、`xmake`编译链接生成`mininet`可执行文件，打包进入 `sd.bin`
 
 这里我使用的`mcopy`来实现的（用的是Codespace来写的代码，无root权限，不能使用mount挂载），具体命令为
+
 ```sh
 mcopy -i sd.bin /path/of/the/minizip ::
 ```
@@ -120,6 +158,10 @@ mcopy -i sd.bin /path/of/the/minizip ::
 运行结果：
 
 ![qemu运行结果](https://pic.tim-wcx.ltd/img/qemu_run_minizip.png)
+
+6、代码见：
+
+[https://github.com/WCX1024979076/userapps](https://github.com/WCX1024979076/userapps)
 
 ## 参考链接
 
