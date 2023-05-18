@@ -10,11 +10,13 @@
 
 ~~BL808 FLASH的实现？~~
 
+~~完成了GNU项目的minizip的迁移~~
+
 ESP32-C3的WIFI/GPIO/UART/SPI/WDG实现？
 
 BL808 WIFI的实现？
 
-RT Smart GNU项目的迁移？
+RT Smart GNU项目的迁移，例如Sqllite、micropython、**python**和mcurses？
 
 2、图优部分
 
@@ -72,7 +74,9 @@ RT Smart GNU项目的迁移？
 
 下半年去四川游玩
 
-六七月份去南京游玩 / 研究生入学
+六月份去南京游玩 / 研究生入学
+
+5、本周完成成人教育论文的评价
 
 ### 暂缓
 
@@ -127,4 +131,5 @@ RT Smart GNU项目的迁移？
 ~~要修复的问题~~
 
 - ~~汇文数据库的Ping连接测试~~
+
 - ~~IO控制和休眠实现~~
