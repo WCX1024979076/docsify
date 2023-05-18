@@ -26,7 +26,7 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python**和mcurses
 
 第一章 绪论
 
-第二章 xxxx
+~~第二章 图计算~~
 
 第三章 xxxx
 

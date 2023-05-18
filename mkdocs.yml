@@ -134,11 +134,9 @@ nav:
       - 求逆序对: csdn/求逆序对.md
       - 简介扩展欧几里德定理: csdn/简介扩展欧几里德定理.md
       - 链表: csdn/链表.md
-  - 个人计划:
-      - 安排: plan/README.md
-  - 关于:
-      - 关于: about/README.md
-    
+  - 个人计划: plan/README.md
+  - 关于: about/README.md
+
 markdown_extensions:
   - admonition
   - codehilite:
