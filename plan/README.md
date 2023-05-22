@@ -20,11 +20,11 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python**和mcurses
 
 2、图优部分
 
-初稿计划于28日完成，还有10天？
+初稿计划于25日完成，还有4天？
 
-10天内完成五章的撰写？两天一章？
+10天内完成五章的撰写？一天一章？
 
-第一章 绪论
+~~第一章 绪论~~
 
 ~~第二章 图计算~~
 
@@ -88,8 +88,6 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python**和mcurses
 
 六月份去南京游玩 / 研究生入学
 
-5、本周完成成人教育论文的评价
-
 ### 暂缓
 
 1、一生一芯的进一步优化 
@@ -145,3 +143,5 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python**和mcurses
 - ~~汇文数据库的Ping连接测试~~
 
 - ~~IO控制和休眠实现~~
+
+~~10、本周完成成人教育论文的评价~~
