@@ -18,6 +18,8 @@ BL808 WIFI的实现？
 
 RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurses？
 
+开源之夏的申请，ESP32 or GNU ？
+
 2、图优部分
 
 剩余要做的事情：
@@ -27,6 +29,8 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 **参考文献的整理？**
 
 感觉传统计算、GraphBolt和Tegra讲的不够清楚，再改改？
+
+论文的总排版？重点是图片和公式的排版？
 
 灵敏度分析、切换性能开销、每轮迭代的执行模式和执行时间分析部分撰写？
 
@@ -71,8 +75,6 @@ front_curr_tegra的修正？
 ~~写论文，用公式等描述GraphBolt增量计算、传统计算、Tegra增量计算计算过程、优缺点~~
 
 ~~用公式整理GraphBolt切换的数学模型？~~
-
-论文的总排版？重点是图片和公式的排版
 
 ~~切换的伪代码撰写，以及活跃点集、change数组、聚合值数组和顶点数组是如何做到切换的？~~
 
