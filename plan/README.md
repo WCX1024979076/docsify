@@ -12,23 +12,23 @@
 
 ~~完成了GNU项目的minizip的迁移~~
 
-ESP32-C3的WIFI/GPIO/UART/SPI/WDG实现？
+**ESP32-C3的WIFI/GPIO/UART/SPI/WDG实现？**
 
 BL808 WIFI的实现？
 
 RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurses？
 
-开源之夏的申请，ESP32 ~~ or GNU ~~ ？
+开源之夏的申请，ESP32 ~~or GNU~~ ？等待评选结果中
 
 2、图优部分
 
-剩余要做的事情：
-
-准备毕业设计答辩？
+准备毕业设计答辩PPT？
 
 准备优秀毕业设计申请书？
 
 继续优化GraphBolt & Tegra 提升性能？
+
+HPC论文提上日程？DDL 6月30日？
 
 ~~毕业设计论文的撰写？~~
 
@@ -100,21 +100,7 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 
 ~~继续阅读GraphBolt源代码~~
 
-3、活塞气举系统
-
-~~整理一份Word文档，关于梯度下降法~~
-
-~~https://blog.csdn.net/qq_35240204/article/details/106864745~~
-
-~~https://blog.csdn.net/weixin_42018112/article/details/88096070~~
-
-登陆界面
-
-~~https://ubuntu.tim-wcx.ltd/oil/~~
-
-~~https://ubuntu.tim-wcx.ltd/oil_new~~
-
-4、外出旅游计划安排
+3、外出旅游计划安排
 
 下半年去四川游玩
 
@@ -177,3 +163,17 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 - ~~IO控制和休眠实现~~
 
 ~~10、本周完成成人教育论文的评价~~
+
+~~11、活塞气举系统~~
+
+~~整理一份Word文档，关于梯度下降法~~
+
+~~https://blog.csdn.net/qq_35240204/article/details/106864745~~
+
+~~https://blog.csdn.net/weixin_42018112/article/details/88096070~~
+
+~~登陆界面~~
+
+~~https://ubuntu.tim-wcx.ltd/oil/~~
+
+~~https://ubuntu.tim-wcx.ltd/oil_new~~
