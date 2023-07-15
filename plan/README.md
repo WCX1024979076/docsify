@@ -20,41 +20,37 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 
 开源之夏的申请，ESP32 申请成功，三个任务：
 
-- 使用`scons`编译而非`cmake`，进行重构；有点难度，不知从哪里下手，或许该放手一搏，但是`sdkconfig`不知道该如何配置；另外为啥需要`FreeRTOS`的中间转接层？直接使用`RTthread`不可以吗？
+- ~~使用`scons`编译而非`cmake`，进行重构；找到链接脚本错误并尝试解决中。。。 重构成功，成功解决了bin生成问题和链接脚本问题~~
 
-- 实现WIFI驱动 太他妈难了，`ESP-IDF`这边提供了`LWIP`库，`RtThread`这边提供了`LWIP`库，看来必须进行`REMAKE`了。。。。。脑壳疼
+- 实现WIFI驱动 太他妈难了，`ESP-IDF`这边提供了`LWIP`库，`RtThread`这边提供了`LWIP`库，尝试对`ESP-IDF`中`esp-wifi`库进行重构
 
 - 实现BLE驱动
 
+完成阶段1任务提交PR，是否要更改描述以及研究如何分离出`esptools.py`生成`bin`的逻辑？
+
 2、图优部分
-
-HPC论文提上日程？DDL 7月7日？
-
-GraphBolt和Tegra的进一步结合优化？
-
-原版GraphBolt和现版GraphBolt区别？
 
 读中文论文，学习思路？
 
-**改进Lp算法的Tegra准确度问题？**
+阅读`To Push or To Pull.pdf`论文
 
-用机器学习算法预测`t1`和`t2`，效果？脑阔好疼，感觉工作毫无意义？
+目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降
+
+~~GraphBolt和Tegra的进一步结合优化？~~
+
+~~原版GraphBolt和现版GraphBolt区别？~~
+
+~~HPC论文提上日程？DDL 7月7日？废了~~
+
+~~改进Lp算法的Tegra准确度问题？已改进~~
+
+~~用机器学习算法预测`t1`和`t2`，效果？脑阔好疼，感觉工作毫无意义？**确实没有意义**~~
 
 3、外出旅游计划安排
 
 下半年去四川游玩
 
 六月份去南京游玩 / 研究生入学
-
-4、C#图书管理系统
-
-~~要修复的问题~~
-
-- ~~汇文数据库的Ping连接测试~~
-
-- ~~IO控制和休眠实现~~
-
-软著材料编写
 
 ## 暂缓
 
@@ -106,7 +102,7 @@ GraphBolt和Tegra的进一步结合优化？
 
 ~~9、本周完成成人教育论文的评价~~
 
-~~19、本科毕业设计~~
+~~10、本科毕业设计~~
 
 ~~准备毕业设计答辩PPT？~~
 
@@ -201,3 +197,13 @@ GraphBolt和Tegra的进一步结合优化？
 ~~https://ubuntu.tim-wcx.ltd/oil/~~
 
 ~~https://ubuntu.tim-wcx.ltd/oil_new~~
+
+~~13、C#图书管理系统~~
+
+~~要修复的问题~~
+
+- ~~汇文数据库的Ping连接测试~~
+
+- ~~IO控制和休眠实现~~
+
+~~软著材料编写~~
