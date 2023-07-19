@@ -26,15 +26,33 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 
 - 实现BLE驱动
 
-完成阶段1任务提交PR，是否要更改描述以及研究如何分离出`esptools.py`生成`bin`的逻辑？
+完成阶段1任务提交PR，计划要完成的事情：
+
+- ~~`esptools.py`逻辑分离~~
+
+- ~~上传`bootloader.bin`和`partition-table.bin`，用户可不安装`esp_tools`~~
+
+- ~~更改`README.md`，完善描述，是否要废弃`idf.py`编译？已废弃~~
+
+- ~~更改`action.xml`加入`scons`自动化测试~~
+
+提交PR：
+
+https://github.com/RT-Thread/rt-thread/pull/7821
+
+https://github.com/RT-Thread-packages/FreeRTOS-Wrapper/pull/36
+
+https://github.com/RT-Thread-packages/esp-idf/pull/10
+
+https://github.com/RT-Thread/packages/pull/1635
 
 2、图优部分
 
 读中文论文，学习思路？
 
-阅读`To Push or To Pull.pdf`论文
+阅读`To Push or To Pull.pdf`论文，大体读了一遍，没读懂
 
-目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降
+目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降；不是由于活跃点集挂钩，必须激活一部分顶点来进行`Pull`，感觉可以切换优化？
 
 ~~GraphBolt和Tegra的进一步结合优化？~~
 

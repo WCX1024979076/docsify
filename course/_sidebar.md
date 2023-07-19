@@ -11,3 +11,4 @@
   * [博流WIFI资料](/course/博流WIFI资料.md)
   * [makefile学习笔记](/course/make.md)
   * [RT_Smart中minizip移植记录](/course/RT_Smart中minizip移植记录.md)
+  * [图书馆座位预约系统](/course/图书馆座位预约系统.md)
