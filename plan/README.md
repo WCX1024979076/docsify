@@ -40,11 +40,7 @@ RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurse
 
 https://github.com/RT-Thread/rt-thread/pull/7821
 
-https://github.com/RT-Thread-packages/FreeRTOS-Wrapper/pull/36
-
 https://github.com/RT-Thread-packages/esp-idf/pull/10
-
-https://github.com/RT-Thread/packages/pull/1635
 
 2、图优部分
 
@@ -54,6 +50,10 @@ https://github.com/RT-Thread/packages/pull/1635
 
 目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降；不是由于活跃点集挂钩，必须激活一部分顶点来进行`Pull`，感觉可以切换优化？
 
+实现`SSSP`算法和`BFS`算法，`GraphBolt`能计算`SSSP`吗？我觉得不太可能吧，`SSSP`是取最小值`min`？`BFS`是取最小值层数`depth`；`SSSP`和`BFS`的连通性该如何解决？两种单调类算法`push`用小顶堆实现也不是不可以，每个顶点都开一个小顶堆，小顶堆的开销大概是`O(|E|)`；对于`pull`而言无需这么做，只需识别出受影响的顶点并且进行重计算即可。理论上可行，再想想。刚刚想了一下，需要每次迭代每个顶点都需要维护一个小顶堆，开销大概为O(T*|E|)。
+
+~~优化`Tegra`算法，添加`has_source_chang`和`force_active`~~
+
 ~~GraphBolt和Tegra的进一步结合优化？~~
 
 ~~原版GraphBolt和现版GraphBolt区别？~~
@@ -62,7 +62,7 @@ https://github.com/RT-Thread/packages/pull/1635
 
 ~~改进Lp算法的Tegra准确度问题？已改进~~
 
-~~用机器学习算法预测`t1`和`t2`，效果？脑阔好疼，感觉工作毫无意义？**确实没有意义**~~
+~~用机器学习算法预测`t1`和`t2`~~
 
 3、外出旅游计划安排
 
