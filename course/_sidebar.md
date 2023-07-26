@@ -12,3 +12,4 @@
   * [makefile学习笔记](/course/make.md)
   * [RT_Smart中minizip移植记录](/course/RT_Smart中minizip移植记录.md)
   * [图书馆座位预约系统](/course/图书馆座位预约系统.md)
+  * [RT-Thread中ESP32_C3芯片上手指南](/course/ESP32_C3芯片.md)
