@@ -14,19 +14,35 @@
 
 **ESP32-C3的WIFI/GPIO/UART/SPI/WDG实现？**
 
-提交个PR，userapps/minizip包
+~~提交个PR，userapps/minizip包~~
 
 BL808 WIFI的实现？
 
 RT Smart GNU项目的迁移，例如Sqllite、micropython、**python** 和mcurses？
 
+补充`FreeRTOS-Wrapper`的`README_zh.md`
+
 开源之夏的申请，ESP32 申请成功，三个任务：
 
 - ~~使用`scons`编译而非`cmake`，进行重构；找到链接脚本错误并尝试解决中。。。 重构成功，成功解决了bin生成问题和链接脚本问题~~
 
-- 实现WIFI驱动 太他妈难了，`ESP-IDF`这边提供了`LWIP`库，`RtThread`这边提供了`LWIP`库，尝试对`ESP-IDF`中`esp-wifi`库进行重构；~~这个进行增量增加依赖，缺少依赖增加相关函数来实现~~；有点难，建议抓编译日志，抓取参与的C文件或者通过cmake.txt来抓取分析。
+- 实现WIFI驱动 太他妈难了，`ESP-IDF`这边提供了`LWIP`库，`RtThread`这边提供了`LWIP`库，尝试对`ESP-IDF`中`esp-wifi`库进行重构；~~这个进行增量增加依赖，缺少依赖增加相关函数来实现；有点难，建议抓编译日志，抓取参与的C文件或者通过cmake.txt来抓取分析。目前编译成功，但是离可以使用还有一段距离，报错指令缺失。~~目前可以链接，但是rt_mutex_take报错。
+
+踩坑记录：
+
+1、nvs_flash_init函数rtthread代码放到iram上，已解决
+
+2、Og和Os编译参数，可能
+
+3、tskTCB的问题，暂时绕过
+
+4、xQueueSemaphoreTake中rt_mutex_take的问题？？？
+
+5、xQueueReceiveFromISR和xQueueReceiveFromISR的锅？？？
 
 - 实现BLE驱动
+
+NimBle模块，RT-Thread已迁移
 
 ~~完成阶段1任务提交PR，计划要完成的事情：~~
 
@@ -54,13 +70,23 @@ https://club.rt-thread.org/ask/article/d0cfd78e7cdec07b.html
 
 读中文论文，学习思路？
 
+跑bfs和sssp算法，pull模式和push模式相比是不是会有切换的点；而对非单调类算法，绝大多数情况是pull模式更有优势
+
+看一下相关论文，在动态图处理领域你想做什么方向，作为你硕士阶段的研究点，可以找一篇经典论文作为基础（比如流图处理领域就是graphbolt和kickstarter），看论文后可以做一个总结，看看前沿的工作围绕哪些方向做的，做一个ppt之类的
+
 阅读`To Push or To Pull.pdf`论文，大体读了一遍，没读懂
 
-阅读新发的论文。。
+阅读新发的论文 * 2，学姐一篇 + 张老师一篇。
 
-目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降；不是由于活跃点集挂钩，必须激活一部分顶点来进行`Pull`，感觉可以切换优化？Tegra收敛判断还是有点问题，再想办法改改。。
+目前Tegra性能存在一些问题，猜测是`source_change_in_contrbution`导致的性能下降；不是由于活跃点集挂钩，必须激活一部分顶点来进行`Pull`，感觉可以切换优化？Tegra收敛判断还是有点问题，再想办法改改。
 
-实现`SSSP`算法和`BFS`算法，`GraphBolt`能计算`SSSP`吗？我觉得不太可能吧，`SSSP`是取最小值`min`？`BFS`是取最小值层数`depth`；`SSSP`和`BFS`的连通性该如何解决？两种单调类算法`push`用小顶堆实现也不是不可以，每个顶点都开一个小顶堆，小顶堆的开销大概是`O(|E|)`；对于`pull`而言无需这么做，只需识别出受影响的顶点并且进行重计算即可。理论上可行，再想想。刚刚想了一下，需要每次迭代每个顶点都需要维护一个小顶堆，开销大概为O(T*|E|)，感觉差不多可行，明天可以试一下。实现遇到了一些问题，原子操作无法实现，需要借助锁来实现；另外`sourceChangeInContribution`没啥好实现的思路，再想想想想，感觉还是不行，再想想想想。难写难写，这`sourceChangeInContribution`是真不好实现，差不多了，初稿实现了，有一些小小的误差，但是问题不大。。。。实现了，下一步就是优化 & 读论文优化 & 实现`Pull`和传统（还是要实现`sourechange`）。
+<details> 
+<summary>实现`SSSP`算法和`BFS`算法</summary>
+
+~~实现`SSSP`算法和`BFS`算法，`GraphBolt`能计算`SSSP`吗？我觉得不太可能吧，`SSSP`是取最小值`min`？`BFS`是取最小值层数`depth`；`SSSP`和`BFS`的连通性该如何解决？两种单调类算法`push`用小顶堆实现也不是不可以，每个顶点都开一个小顶堆，小顶堆的开销大概是`O(|E|)`；对于`pull`而言无需这么做，只需识别出受影响的顶点并且进行重计算即可。理论上可行，再想想。刚刚想了一下，需要每次迭代每个顶点都需要维护一个小顶堆，开销大概为O(T*|E|)，感觉差不多可行，明天可以试一下。实现遇到了一些问题，原子操作无法实现，需要借助锁来实现；另外`sourceChangeInContribution`没啥好实现的思路，再想想想想，感觉还是不行，再想想想想。难写难写，这`sourceChangeInContribution`是真不好实现，差不多了，初稿实现了，有一些小小的误差，但是问题不大。。。。实现了，下一步就是优化 & 读论文优化 & 实现`Pull`和传统（还是要实现`sourechange`。实现了SSSP和BFS的Tegra版本。~~
+
+</details>
+
 
 ~~优化`Tegra`算法，添加`has_source_chang`和`force_active`~~
 
@@ -74,7 +100,15 @@ https://club.rt-thread.org/ask/article/d0cfd78e7cdec07b.html
 
 ~~用机器学习算法预测`t1`和`t2`~~
 
-3、外出旅游计划安排
+3、未来图书馆空间预约系统
+
+写前端，已新建项目并开始写
+
+4、8月19日去微山湖游玩
+
+具体后面做计划
+
+5、外出旅游计划安排
 
 下半年去四川游玩
 
