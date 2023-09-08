@@ -68,6 +68,8 @@ https://club.rt-thread.org/ask/article/d0cfd78e7cdec07b.html
 
 2、图优部分
 
+想找一下关于图计算的开源项目，例如阿里云图计算，看看能否参与一下下
+
 读中文论文，学习思路？
 
 跑bfs和sssp算法，pull模式和push模式相比是不是会有切换的点；而对非单调类算法，绝大多数情况是pull模式更有优势
