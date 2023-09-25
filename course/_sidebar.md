@@ -13,3 +13,4 @@
   * [RT_Smart中minizip移植记录](/course/RT_Smart中minizip移植记录.md)
   * [图书馆座位预约系统](/course/图书馆座位预约系统.md)
   * [RT-Thread中ESP32_C3芯片上手指南](/course/ESP32_C3芯片.md)
+  * [图知识库](/course/图知识库.md)
