@@ -80,7 +80,7 @@
 
 ## 运行截图
 
-![shell截图](https://pic.tim-wcx.ltd/img/20230726122848.png)
+![shell截图](https://picup.tim-wcx.ltd/img/20230726122848.png)
 
 ## 问题与反馈
 

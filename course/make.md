@@ -265,7 +265,7 @@ make --file=mkfile # make --file=<filename>
 
 ## 一个稍微复杂的Makefile
 
-![](https://pic.tim-wcx.ltd/img/1.png)
+![](https://picup.tim-wcx.ltd/img/1.png)
 
 ```makefile
 sudoku: block.o command.o input.o main.o scene.o test.o

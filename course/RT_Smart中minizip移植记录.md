@@ -157,7 +157,7 @@ mcopy -i sd.bin /path/of/the/minizip ::
 
 运行结果：
 
-![qemu运行结果](https://pic.tim-wcx.ltd/img/qemu_run_minizip.png)
+![qemu运行结果](https://picup.tim-wcx.ltd/img/qemu_run_minizip.png)
 
 6、代码见：
 
